@@ -1,1 +1,1 @@
-Demonstrator Front end based on jQuery Mobile
+the DemonStrator Front-end based on jQuery Mobile
