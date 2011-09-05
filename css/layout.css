@@ -39,9 +39,6 @@
 	
 	
 }
-.drive-content{
-	
-}
 
 .buttons-container{
 	width: 600px;
@@ -63,11 +60,12 @@
 	width: 50%;
 	float:right;
 	
+	
    }
    
-#thrust-slider{
-
+#thrust-indicator{
 	width: 50%;
+;
 	float: left;
 	text-align: center;
 }

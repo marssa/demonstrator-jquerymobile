@@ -24,7 +24,7 @@
 <!-- Start of first page -->
 <div data-role="page" id="home" data-theme="b" data-fullscreen="true">
 
-    <div class="header" data-role="header" data-theme="a"  data-position="fixed" >
+    <div class="header" data-role="header" data-theme="a"  >
         <h1>theDemonstrator Front-End</h1>
     </div><!-- /header -->
 
@@ -132,9 +132,9 @@
 	</div>
 </div>
 
-<div data-role="page" id="Drive" data-theme="c"  data-position="fixed" data-fullscreen="true">
+<div data-role="page" id="Drive" data-theme="c"  data-fullscreen="true">
 
-	<div data-role="header" data-theme="a"  data-position="fixed" >
+	<div data-role="header" data-theme="a"  >
 		<h1>Drive</h1>
 		<a href="#home" data-icon="home" data-theme="c">Home</a>
 	</div>
@@ -142,9 +142,23 @@
 	<div class="content" data-role="content" >
 	
 		<div class="drive-content">
-			<div id="thrust-slider" >
-				
-       		</div>
+		<!--  	<div id="thrust-slider" >
+				<div id="vertical-slider" class="slider"></div>
+       		</div> -->
+       			<div id="thrust-indicator">
+	       			<div dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="350" height="350"
+						cx="170" cy="150" radius="150" startAngle="60" endAngle="300" useRangeStyles="0"
+						hideValues="false" color: "white" majorTicks="{length: 10, offset: 100, interval: 10, color: 'gray'}" 
+						minorTicks="{length: 5, offset: 100, interval: 5, color: 'gray'}"
+						>
+					   
+						<div dojoType="dojox.widget.gauge.Range" low="0" high="40" color="{'color': 'black'}">
+						</div>
+						<div dojoType="dojox.widget.gauge.Range" low="-40" high="0" color="{'color': 'black'}">
+						</div>
+					</div>
+       			</div>
+       		
 			<div class="drive-control">
 				<div class="buttons-container">
 					<div class="upper-button">
