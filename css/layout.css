@@ -65,15 +65,27 @@
    
 #thrust-indicator{
 	width: 50%;
-;
+	
 	float: left;
 	text-align: center;
 }
 
-.rudder-gauge{
+.rudder-indicator{
 	
 }
    
+#rudder{
+	margin-top: 30px;
+
+}  
+ 
+#rudder-gauge{
+	height: 500px;
+	width: 500px;
+	margin-right:auto;
+	margin-left: auto;
+}
+  
 .img-arrow{
 	height: 75px;
 	width: 75px;

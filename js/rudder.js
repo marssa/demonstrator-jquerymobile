@@ -1,7 +1,7 @@
 //rudder gauge
 
-$('#Drive').live('pageshow',function(event){
 
+	function rudderAngleIndicator(){
           dojo.require("dojox.widget.AnalogGauge");
             dojo.require("dojox.widget.gauge.AnalogArcIndicator");
             dojo.require("dojox.widget.gauge.AnalogNeedleIndicator");
@@ -10,9 +10,9 @@ $('#Drive').live('pageshow',function(event){
                 var gauge = dijit.byId('rudder-indicator');
                 // Used for a gradient arc indicator below:
                
-                
+                                         
                 gauge.addIndicator(new dojox.widget.gauge.AnalogArcIndicator({
-                    'value': 80,
+                    'value': 40,
                     'width': 10,
                     'offset': 150,
                     'color': 'red',
@@ -21,7 +21,7 @@ $('#Drive').live('pageshow',function(event){
                 }));
                 
                 gauge.addIndicator(new dojox.widget.gauge.AnalogArcIndicator({
-                    'value': 40,
+                    'value': 0,
                     'width': 10,
                     'offset': 150,
                     'color': 'green',
@@ -37,5 +37,7 @@ $('#Drive').live('pageshow',function(event){
                     'title': 'Needle',
                     'hover': 'Needle: 100'
                 }));
+               
+            
             });
-});
+	}

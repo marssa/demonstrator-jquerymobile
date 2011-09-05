@@ -3,13 +3,16 @@
 <html>
    <head>
     <title>jQuery Mobile Tutorial on Codeforest.net</title>
-   <link rel="stylesheet" type="text/css" href="css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="css/layout.css" /> 
+     <!-- <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
     <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> -->
     <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/rudder.js"></script>
     <script type="text/javascript" src="js/googlemap.js"></script>
+    <script type="text/javascript" src="js/drive.js"></script>
   	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
@@ -142,22 +145,33 @@
 	<div class="content" data-role="content" >
 	
 		<div class="drive-content">
-		<!--  	<div id="thrust-slider" >
-				<div id="vertical-slider" class="slider"></div>
-       		</div> -->
+	
        			<div id="thrust-indicator">
-	       			<div dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="350" height="350"
-						cx="170" cy="150" radius="150" startAngle="60" endAngle="300" useRangeStyles="0"
-						hideValues="false" color: "white" majorTicks="{length: 10, offset: 100, interval: 10, color: 'gray'}" 
-						minorTicks="{length: 5, offset: 100, interval: 5, color: 'gray'}"
-						>
-					   
-						<div dojoType="dojox.widget.gauge.Range" low="0" high="40" color="{'color': 'black'}">
-						</div>
-						<div dojoType="dojox.widget.gauge.Range" low="-40" high="0" color="{'color': 'black'}">
+       				<div data-role="fieldcontain" id="thrust-slider" >
+						<label for="slider">Thrust Level</label>
+						<input  type="range" name="slider" id="slider" value="0" min="0" max="100"/>
+					</div>
+	       			
+	       			<div id="rudder">
+	       				<label> Rudder Angle Indicator </label>
+	   				
+	   					<div id="rudder-gauge">
+		   					<div  dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="auto" height="auto"
+								cx="160" cy="160" radius="150" startAngle="60" endAngle="300" useRangeStyles="0" 
+								hideValues="true" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
+								minorTicks="{length: 5, offset: 110, interval: 5, color: 'gray'}"	>
+							   
+								<div dojoType="dojox.widget.gauge.Range" low="0" high="40" hover="0-40" color="{'color': 'black'}">
+								</div>
+								<div dojoType="dojox.widget.gauge.Range" low="-40" high="0" color="{'color': 'black'}">
+								</div>
+							</div>
 						</div>
 					</div>
-       			</div>
+						
+
+				</div>
+
        		
 			<div class="drive-control">
 				<div class="buttons-container">
