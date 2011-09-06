@@ -12,7 +12,7 @@
                
                                          
                 gauge.addIndicator(new dojox.widget.gauge.AnalogArcIndicator({
-                    'value': 40,
+                    'value': 50,
                     'width': 10,
                     'offset': 150,
                     'color': 'red',

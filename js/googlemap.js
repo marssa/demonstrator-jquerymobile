@@ -11,7 +11,7 @@ $('#NavDisplay').live("pageshow", function() {
 function initialize(lat,lng) {
 	var latlng = new google.maps.LatLng(lat, lng);
 	var myOptions = {
-		zoom: 8,
+		zoom: 18,
 		center: latlng,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
     };
