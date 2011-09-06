@@ -18,6 +18,7 @@
                     'color': 'red',
                     'title': 'Arc',
                     'hover': 'Arc: 80'
+                    
                 }));
                 
                 gauge.addIndicator(new dojox.widget.gauge.AnalogArcIndicator({
