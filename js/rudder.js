@@ -15,7 +15,7 @@
                     'value': 50,
                     'width': 10,
                     'offset': 150,
-                    'color': 'red',
+                    'color': 'green',
                     'title': 'Arc',
                     'hover': 'Arc: 80'
                     
@@ -25,13 +25,13 @@
                     'value': 0,
                     'width': 10,
                     'offset': 150,
-                    'color': 'green',
+                    'color': 'red',
                     'title': 'Arc',
                     'hover': 'Arc: 80'
                 }));
                 
                 gauge.addIndicator(new dojox.widget.gauge.AnalogNeedleIndicator({
-                    'value': 0,
+                    'value':0,
                     'width': 8,
                     'length': 150,
                     'color': 'white',

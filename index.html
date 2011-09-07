@@ -5,10 +5,10 @@
     <title>jQuery Mobile Tutorial on Codeforest.net</title>
     <link rel="stylesheet" type="text/css" href="css/layout.css" /> 
      <!-- <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
-    <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> -->
-    <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>      
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/rudder.js"></script>
     <script type="text/javascript" src="js/googlemap.js"></script>
@@ -21,6 +21,12 @@
         djConfig="parseOnLoad: true">
    	</script>
 
+	  <!-- JQUERY MOBILE  -->
+
+      
+      
+      
+        <!-- END OF JQUERY MOBILE -->
 </head>
 <body> 
 
@@ -147,9 +153,9 @@
 		<div class="drive-content">
 	
        			<div id="thrust-indicator">
-       				<div data-role="fieldcontain" id="thrust-slider" >
+       				<div data-role="fieldcontain"  >
 						<label for="slider">Thrust Level</label>
-						<input  type="range" name="slider" id="slider" value="0" min="0" max="100"/>
+						<input  type="range" name="slider" id="thrust-slider" value="0" min="0" max="100"/>
 					</div>
 	       			
 	       			<div id="rudder">
@@ -158,8 +164,8 @@
 	   					<div id="rudder-gauge">
 
 		   					<div  style="margin-left:auto; margin-right:auto" dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="auto" height="auto"
-								cx="225" cy="175" radius="150" startAngle="-90" endAngle="90" useRangeStyles="0" 
-								hideValues="true" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
+								cx="225" cy="200" radius="150" startAngle="-90" endAngle="90" useRangeStyles="0" 
+								hideValues="false" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
 								minorTicks="{length: 5, offset: 110, interval: 5, color: 'gray'}"	>
 							   
 								<div dojoType="dojox.widget.gauge.Range" low="0" high="50" hover="0-40" color="{'color': 'black'}">
