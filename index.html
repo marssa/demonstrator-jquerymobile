@@ -152,32 +152,37 @@
 	
 		<div class="drive-content">
 	
-       			<div id="thrust-indicator">
-       				<div data-role="fieldcontain"  >
+       			
+	       			       			
+				
+			
+				<div id="rudder">
+      				<label> Rudder Angle Indicator </label>
+      				<div id="rudder-gauge">
+  					<div  style="margin-left:auto; margin-right:auto" dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="400" height="100px"
+					cx="225" cy="200" radius="150" startAngle="-90" endAngle="90" useRangeStyles="0" 
+					hideValues="true" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
+					minorTicks="{length: 5, offset: 110, interval: 5, color: 'gray'}"	>
+				   
+					<div dojoType="dojox.widget.gauge.Range" low="0" high="50" hover="0-40" color="{'color': 'black'}">
+					</div>
+					<div dojoType="dojox.widget.gauge.Range" low="-50" high="0" color="{'color': 'black'}">
+					</div>
+				</div>
+				</div>
+      				
+  				</div>
+  				
+  				<div id="thrust-indicator">
+       				<div data-role="fieldcontain" >
 						<label for="slider">Thrust Level</label>
-						<input  type="range" name="slider" id="thrust-slider" value="0" min="0" max="100"/>
+						<input  type="range" name="slider" id="thrust-slider" value="0" min="-100" max="100"/>
 					</div>
-	       			
-	       			<div id="rudder">
-	       				<label> Rudder Angle Indicator </label>
-	   				
-	   					<div id="rudder-gauge">
-
-		   					<div  style="margin-left:auto; margin-right:auto" dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="auto" height="auto"
-								cx="225" cy="200" radius="150" startAngle="-90" endAngle="90" useRangeStyles="0" 
-								hideValues="false" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
-								minorTicks="{length: 5, offset: 110, interval: 5, color: 'gray'}"	>
-							   
-								<div dojoType="dojox.widget.gauge.Range" low="0" high="50" hover="0-40" color="{'color': 'black'}">
-								</div>
-								<div dojoType="dojox.widget.gauge.Range" low="-50" high="0" color="{'color': 'black'}">
-								</div>
-							</div>
-						</div>
-					</div>
+	       		
+	       		</div>
 						
 
-				</div>
+				
 
        		
 			<div class="drive-control">

@@ -8,9 +8,7 @@
 
             dojo.addOnLoad(function() {
                 var gauge = dijit.byId('rudder-indicator');
-                // Used for a gradient arc indicator below:
-               
-                                         
+            
                 gauge.addIndicator(new dojox.widget.gauge.AnalogArcIndicator({
                     'value': 50,
                     'width': 10,
