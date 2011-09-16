@@ -20,40 +20,22 @@
 	margin-right: 30px;
 }
 
-.lower-buttons{
-	
-	
+.lower-buttons{	
 	margin-top: 10px;
 }
 
-.upper-button{
-	
-	margin-top: 30px;
+#upper-button{
+	margin-top: 10px;
 }
 
-.footer{
-	margin-bottom: 0px;
+#gaugeDiv{
+	display:inline;
+	width: 150px;
 }
 
-#vertical-slider{
-	
-	
-}
-
-.buttons-container{
-	width: 600px;
-	margin: 0px auto;
-	text-align: center;
-	
-
-}
-.drive-button{
-	display:inline-block;
-	height:auto;
-	padding:10px;
-	border-radius:15px;
-	background-color:#353538;
-	margin:10px;
+.drive-content{
+	display:inline;
+	width: 200px;
 }
 
 .drive-control{
@@ -61,6 +43,50 @@
 	
 
    }
+
+.large-buttons{
+	height: 150px;
+	width:150px;
+}
+
+#stop-button{
+	display: inline-block;
+	margin-top: 30px
+}
+
+#full-throttle{
+		
+}
+
+.extreme-buttons{
+	height: 90px;
+	width: 90px;
+}
+
+.footer{
+	margin-bottom: 0px;
+}
+
+#vertical-slider{
+		
+}
+
+.buttons-container{
+	width: 600px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.drive-button{
+	display:inline-block;
+	/*height:auto;*/
+	padding:10px;
+	/*border-radius:15px;
+	background-color:#353538;*/
+	/*margin:10px;*/
+}
+
+
    
 #thrust-indicator{
 	width: 500px;
@@ -72,6 +98,11 @@
 	
 }
    
+
+.content{
+	min-width: 1200px;
+}
+
 #rudder{
 	margin-top: 30px;
 	display:inline-block;
@@ -88,8 +119,8 @@
 }
   
 .img-arrow{
-	height: 75px;
-	width: 75px;
+	height: 120px;
+	width: 120px;
 }
 
 #map_canvas { 

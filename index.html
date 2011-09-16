@@ -8,27 +8,21 @@
       <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
       <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> -->
-   <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>      
+   	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
+        djConfig="parseOnLoad: true">	</script>
+	<script type="text/javascript" src="bindows_gauges/bindows_gauges.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/rudder.js"></script>
     <script type="text/javascript" src="js/googlemap.js"></script>
+    <script type="text/javascript" src="js/gauge.js"></script>
     <script type="text/javascript" src="js/drive.js"></script>
-  	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="PATH_TO_PLUGIN/jquery.ui.map.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
-        djConfig="parseOnLoad: true">
-   	</script>
-
-	  <!-- JQUERY MOBILE  -->
-
-      
-      
-      
-        <!-- END OF JQUERY MOBILE -->
 </head>
-<body> 
+
+<body > 
 
 <!-- Start of first page -->
 <div data-role="page" id="home" data-theme="b" data-fullscreen="true">
@@ -150,64 +144,80 @@
 
 	<div class="content" data-role="content" >
 	
+			<div id="gaugeDiv" style="width: 200px; height: 200px">
+					
+			</div>
+		
 		<div class="drive-content">
 	
-       			
-	       			       			
-				
-			
-				<div id="rudder">
-      				<label> Rudder Angle Indicator </label>
-      				<div id="rudder-gauge">
-  					<div  style="margin-left:auto; margin-right:auto" dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="400" height="100px"
-					cx="225" cy="200" radius="150" startAngle="-90" endAngle="90" useRangeStyles="0" 
-					hideValues="true" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
-					minorTicks="{length: 5, offset: 110, interval: 5, color: 'gray'}"	>
-				   
-					<div dojoType="dojox.widget.gauge.Range" low="0" high="50" hover="0-40" color="{'color': 'black'}">
-					</div>
-					<div dojoType="dojox.widget.gauge.Range" low="-50" high="0" color="{'color': 'black'}">
-					</div>
-				</div>
-				</div>
-      				
-  				</div>
-  				
-  				<div id="thrust-indicator">
-       				<div data-role="fieldcontain" >
-						<label for="slider">Thrust Level</label>
-						<input  type="range" name="slider" id="thrust-slider" value="0" min="-100" max="100"/>
-					</div>
-	       		
-	       		</div>
-						
-
-				
-
-       		
-			<div class="drive-control">
+     		<div class="drive-control">
 				<div class="buttons-container">
-					<div class="upper-button">
+					<div id="full-throttle"  >
+					 	<img class="extreme-buttons" src="img/full-throttle.png" />
+					</div>
+					
+					<div id="upper-button">
+	
 						<div class="drive-button" id="move-forward"  >
-						 	<img class="img-arrow" src="img/up-arrow.png" />
+						 	<img class="img-arrow" src="img/forward.png" />
 						</div>
 					</div>		
 				
 					<div class="lower-buttons">
 						<div class="drive-button" id="turn-portside"  >
-						 	<img class="img-arrow" src="img/left-arrow.png" />
+						 	<img class="img-arrow" src="img/left.png" />
 						</div>
 						
 						<div class="drive-button" id="move-backward" >
-						 	<img class="img-arrow" src="img/down-arrow.png" />
+						 	<img class="img-arrow" src="img/down.png" />
 						</div>
 					
 						<div class="drive-button" id="turn-starboard" >
-					 		<img class="img-arrow" src="img/right-arrow.png" />
+					 		<img class="img-arrow" src="img/right.png" />
+						</div>
+					</div>
+					
+					<div id="full-astern" >
+					 	<img class="extreme-buttons" src="img/full-astern.png" />
+					</div>
+					
+					<div  id="stop-button" >
+					 	<img class="large-buttons" src="img/stop.png" />
+					</div>
+					
+					
+				</div>
+			</div>
+			
+
+
+			
+		<!-- 		<div id="rudder">
+    			<div>
+    				<label> Rudder Angle Indicator </label>
+    			</div>
+    			<div id="rudder-gauge">
+					
+ 					<div  style="margin-left:auto; margin-right:auto" dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="400" height="100px"
+				cx="225" cy="200" radius="150" startAngle="-90" endAngle="90" useRangeStyles="0" 
+				hideValues="true" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
+				minorTicks="{length: 5, offset: 110, interval: 5, color: 'gray'}"	>
+			   
+						<div dojoType="dojox.widget.gauge.Range" low="0" high="50" hover="0-40" color="{'color': 'black'}">
+						</div>
+						<div dojoType="dojox.widget.gauge.Range" low="-50" high="0" color="{'color': 'black'}">
 						</div>
 					</div>
 				</div>
-			</div>
+    		</div> --> <!-- rudder -->
+  				
+  			<!-- 	<div id="thrust-indicator">
+       				<div data-role="fieldcontain" >
+						<label for="slider">Thrust Level</label>
+						<input  type="range" name="slider" id="thrust-slider" value="0" min="-100" max="100"/>
+					</div>
+	       		</div>--> <!-- thrust indicator --> 
+			
 		</div>
 	</div>
 	<div data-role="footer" data-theme="a"  data-position="fixed">
@@ -222,6 +232,5 @@
     </div><!-- /footer -->
 	
 </div>
-
 </body>
 </html>
