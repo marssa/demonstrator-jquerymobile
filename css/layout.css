@@ -1,3 +1,10 @@
+#full-throttle-highlight{
+	
+	position:absolute;
+	display:none;
+}
+
+
 #toggleswitch {  
     width: 120px; 
     height: 150px !important;  
@@ -35,11 +42,11 @@
 
 .drive-content{
 	display:inline;
-	width: 200px;
+	width: 100px;
 }
 
 .drive-control{
-	width: 100%;
+	
 	
 
    }
@@ -100,7 +107,7 @@
    
 
 .content{
-	min-width: 1200px;
+	min-width: 300px;
 }
 
 #rudder{

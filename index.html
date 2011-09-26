@@ -1,25 +1,41 @@
 
 <!DOCTYPE html>
 <html>
-   <head>
+  <head>
     <title>jQuery Mobile Tutorial on Codeforest.net</title>
+    
     <link rel="stylesheet" type="text/css" href="css/layout.css" /> 
-     <!-- <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>-->
-      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
-      <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script> -->
-   	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script>
+  	
+	<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" /> -->
+	<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b2/jquery.mobile-1.0b2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script> -->
+	
+	<!--  JQueryMobile -->  	
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
+   	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+   	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script> -->
+   	
+   	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.5.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+   	
+   	<!-- personal	 -->
+   	<script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="bindows_gauges/bindows_gauges.js"></script>
+    <script type="text/javascript" src="js/rudder.js"></script>
+    <script type="text/javascript" src="js/googlemap.js"></script>
+    <script type="text/javascript" src="js/gauge.js"></script>
+    <script type="text/javascript" src="js/drive.js"></script>
+    
+    <!-- google -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
         djConfig="parseOnLoad: true">	</script>
-	<script type="text/javascript" src="bindows_gauges/bindows_gauges.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/rudder.js"></script>
-    <script type="text/javascript" src="js/googlemap.js"></script>
-    <script type="text/javascript" src="js/gauge.js"></script>
-    <script type="text/javascript" src="js/drive.js"></script>
+	
+
 </head>
 
 <body > 
@@ -57,46 +73,29 @@
     </div><!-- /header -->
 		
 	<div data-role="content" class="content" >
-		<div class="ui-grid-a" >
-			<div class="ui-block-a" id="lightlist-a">
-				<h3>Navigation Lights</h3>
-			</div>
-				
-			<div class="ui-block-b" id="lightlist-b">
-				<div data-role="fieldcontain" id="toggleswitch"  >		
-					<select name="NavLightsSlider" id="slider" data-role="slider"  >
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select> 
-				</div>
-			</div>
-				
-			<div class="ui-block-a" id="lightlist-a">
-				<h3>Stern Lights</h3> 
-			</div>
-				
-			<div class="ui-block-b"  id="lightlist-b" >
-				<div data-role="fieldcontain" id="toggleswitch" >		
-					<select name="SternLightsSlider" id="slider" data-role="slider" >
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select> 
-				</div>
-			</div>
-			
-			<div class="ui-block-a" id="lightlist-a">
-				<h3>Underwater Lights</h3> 
-			</div>
-				
-			<div class="ui-block-b"  id="lightlist-b" >
-				<div data-role="fieldcontain" id="toggleswitch" >		
-					<select name="UnderwaterLightsSlider" id="slider" data-role="slider" >
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select> 
-				</div>
-			</div>
-			
+	
+		<div data-role="fieldcontain" id="input" >
+		    <fieldset data-role="controlgroup" data-type="horizontal" >
+		    	<legend>Navigation Lights: </legend>
+		    	
+		    	<input type="radio" name="switchNavLights" id="navLights-on" value="1" data-theme="c" onclick="setRadio(this);" />
+		        <label for="navLights-on">On</label>
+		
+		        <input type="radio" name="switchNavLights" id="navLights-off" value="0" data-theme="c" onclick="setRadio(this);"   />
+		        <label for="navLights-off">Off</label>
+		    </fieldset>			
+		</div>
+		
+		<div data-role="fieldcontain" >
+		    <fieldset data-role="controlgroup" data-type="horizontal" >
+		    	<legend>Undwerwater Lights: </legend>
+		    	
+		    	<input type="radio" name="switchUwLights" id="UWlights-on" value="1" data-theme="c"> 
+		        <label for="UWlights-on">On</label>
+		
+		        <input type="radio" name="switchUwLights" id="UWlights-off" value="0" data-theme="c"  />
+		        <label for="UWlights-off">Off</label>
+		    </fieldset>			
 		</div>
 	</div>
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
@@ -152,7 +151,9 @@
 	
      		<div class="drive-control">
 				<div class="buttons-container">
-					<div id="full-throttle"  >
+					
+					<div id="full-ahead"  >
+						<img id="full-throttle-highlight" src="img/highlight-small.png" />
 					 	<img class="extreme-buttons" src="img/full-throttle.png" />
 					</div>
 					
@@ -160,7 +161,9 @@
 	
 						<div class="drive-button" id="move-forward"  >
 						 	<img class="img-arrow" src="img/forward.png" />
+						 	
 						</div>
+					
 					</div>		
 				
 					<div class="lower-buttons">

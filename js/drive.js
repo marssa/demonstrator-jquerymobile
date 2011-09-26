@@ -1,27 +1,35 @@
 function drive(){
-
-	showgauge();
-	$("#move-forward").live('tap', function(event) {
-		//TODO Replace by web service call
+	$("#move-forward").live('click', function(event) {
+		//var moveID = getElementById(full-throttle-highlight);
 		
+		showHighLight('full-throttle-highlight');
+		$.getJSON("http://localhost:8182/motor/speed/increase");
 	});
 
-	$("#move-backward").live('click', function(event) {
-		//TODO Replace by web service call
-//		 setGaugeValue(10);
-		//alert("back"); 
-		//gauge.needle.setValue(10);
-		
-		alert("back"); 
+	$("#move-backward").live('tap', function(event) {
+		$.getJSON("http://localhost:8182/motor/speed/decrease");
 	});
 
 	$("#turn-starboard").live('click', function(event) {
-		//TODO Replace by web service call
-	   	alert("Boat turns on start-board"); 
+		$.getJSON("http://localhost:8182/rudder/rotate/true");
 	});
 
 	$("#turn-portside").live('click', function(event) {
-		//TODO Replace by web service call
-	   	alert("Boat turns on port-side"); 
+		$.getJSON("http://localhost:8182/rudder/rotate/false");
+	});
+	
+	$("#stop-button").live('click', function(event) {		
+		$.getJSON("http://localhost:8182/motor/speed/0");
+	});
+	
+	$("#full-astern").live('click', function(event) {		
+		$.getJSON("http://localhost:8182/motor/speed/-100");		
+	});
+	
+	$("#full-ahead").live('click', function(event) {		
+		$.getJSON("http://localhost:8182/motor/speed/100");		
 	});
 }
+
+
+
