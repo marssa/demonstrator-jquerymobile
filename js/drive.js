@@ -2,7 +2,7 @@ function drive(){
 	
 	var t;
 	
-	$("#move-forward").live('mousedown', function(event) {
+	$("#move-forward").live('tap', function(event) {
 	//	removeHighLight('##');
 	//	showHighLight('##');
 		$.getJSON("http://localhost:8182/motor/speed/increase");
