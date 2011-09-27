@@ -17,7 +17,7 @@ function drive(){
 		
 	});
 	
-	$("#move-backward").live('mousedown', function(event) {
+	$("#move-backward").live('taphold', function(event) {
 		$.getJSON("http://localhost:8182/motor/speed/decrease");
 		removeHighLight('down-button');
 		showHighLight('down-button-hl');
@@ -31,8 +31,6 @@ function drive(){
 		showHighLight('down-button');
 		
 	});
-	
-
 	
 
 	$("#turn-starboard").live('click', function(event) {
