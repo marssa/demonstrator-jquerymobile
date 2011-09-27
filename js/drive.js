@@ -2,7 +2,7 @@ function drive(){
 	
 	var t;
 	
-	$("#move-forward").live('tap', function(event) {
+	$("#move-forward").live('vlick', function(event) {
 	//	removeHighLight('##');
 	//	showHighLight('##');
 		$.getJSON("http://localhost:8182/motor/speed/increase");
@@ -17,7 +17,7 @@ function drive(){
 		
 	});
 	
-	$("#move-backward").live('taphold', function(event) {
+	$("#move-backward").live('vclick', function(event) {
 		$.getJSON("http://localhost:8182/motor/speed/decrease");
 		removeHighLight('down-button');
 		showHighLight('down-button-hl');
