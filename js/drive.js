@@ -2,7 +2,7 @@ function drive(){
 	
 	var t;
 	
-	$("#move-forward").live('vlick', function(event) {
+	$("#move-forward").live('vmousedown', function(event) {
 	//	removeHighLight('##');
 	//	showHighLight('##');
 		$.getJSON("http://localhost:8182/motor/speed/increase");
@@ -10,14 +10,14 @@ function drive(){
 		
 	});
 	
-	$("#move-forward").live('mouseup', function(event) {
+	$("#move-forward").live('vmouseup', function(event) {
 		clearInterval(t);
 		//removeHighLight('##');
 		//showHighLight('##');
 		
 	});
 	
-	$("#move-backward").live('vclick', function(event) {
+	$("#move-backward").live('vmousedown', function(event) {
 		$.getJSON("http://localhost:8182/motor/speed/decrease");
 		removeHighLight('down-button');
 		showHighLight('down-button-hl');
@@ -25,7 +25,7 @@ function drive(){
 	});	
 	
 	
-	$("#move-backward").live('mouseup', function(event) {
+	$("#move-backward").live('vmouseup', function(event) {
 		clearInterval(t);
 		removeHighLight('down-button-hl');
 		showHighLight('down-button');
