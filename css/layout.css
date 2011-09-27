@@ -2,13 +2,15 @@ body{
 	
 
 }
-
-#full-throttle-highlight{
-	
-	position:absolute;
+#down-button-hl{
 	display:none;
 }
 
+#full-throttle-highlight{
+	display:none;
+	height: 90px;
+	width: 90px;
+}
 
 #toggleswitch {  
     width: 120px; 

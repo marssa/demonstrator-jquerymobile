@@ -1,4 +1,12 @@
 
+/*$(document).live("mobileinit", function(){
+     $.mobile.pushStateEnabled = false;
+});
+*/
+
+
+
+
 $('#Drive').live('pageshow',function(event){
 	
 	drive();
@@ -19,32 +27,13 @@ $('#LightControl').live('pageshow',function(event){
 });
 
 function showHighLight(elementID) {
-	
-	/*if(document.getElementById(elementID).style.display = "block"){
-		$('#' + elementID).hide();  
-	} else if (document.getElementById(elementID).style.display = "none"){
-		$('#' + elementID).show();	
-	}*/
-	
-	
-/*	if(document.getElementById(elementID).style.display = "none"){
-		$('#' + elementID).show();  
-	} 
-	
-	if (document.getElementById(elementID).style.display = "block"){
-		$('#' + elementID).show();	
-	}*/
-	
-
-	
-	if(document.getElementById(elementID).style.display = "block")
-	{
-		document.getElementById(elementID).style.display = "none";	
-	} else	{
-			document.getElementById(elementID).style.display = "block";
-		}
-
+	document.getElementById(elementID).style.display = "block";	
 } 
+function removeHighLight(elementID){
+//	document.getElementById(elementID).style.display = "none";
+	$('#' + elementID).hide();	
+
+}
 
 
 

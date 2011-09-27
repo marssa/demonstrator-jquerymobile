@@ -1,7 +1,7 @@
 			
 var gauge;
 
-function showgauge(){
+function showGauge(){
 	gauge = bindows.loadGaugeIntoDiv("gauge.xml", "gaugeDiv");
 	
 	
