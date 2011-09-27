@@ -52,7 +52,177 @@
         <h4>MARSSA</h4>
     </div><!-- /footer -->
 </div><!-- /page -->
+<!-- LightControl -->
 
+<div data-role="page" id="LightControl" data-theme="b" data-fullscreen="true" >
+	<div data-role="header" data-theme="a">
+        <h1>Light Control</h1>
+        <a href="#home" data-icon="home" data-theme="c">Home</a>
+    
+    </div><!-- /header -->
+		
+	<div data-role="content" class="content" >
+	
+		<div data-role="fieldcontain" id="input" >
+		    <fieldset data-role="controlgroup" data-type="horizontal" >
+		    	<legend>Navigation Lights: </legend>
+		    	
+		    	<input type="radio" name="switchNavLights" id="navLights-on" value="1" data-theme="c" onclick="setRadio(this);" />
+		        <label for="navLights-on">On</label>
+		
+		        <input type="radio" name="switchNavLights" id="navLights-off" value="0" data-theme="c" onclick="setRadio(this);"   />
+		        <label for="navLights-off">Off</label>
+		    </fieldset>			
+		</div>
+		
+		<div data-role="fieldcontain" >
+		    <fieldset data-role="controlgroup" data-type="horizontal" >
+		    	<legend>Undwerwater Lights: </legend>
+		    	
+		    	<input type="radio" name="switchUwLights" id="UWlights-on" value="1" data-theme="c"> 
+		        <label for="UWlights-on">On</label>
+		
+		        <input type="radio" name="switchUwLights" id="UWlights-off" value="0" data-theme="c"  />
+		        <label for="UWlights-off">Off</label>
+		    </fieldset>			
+		</div>
+	</div>
+	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#Drive" >Drive</a></li>
+				<li><a href="#NavDisplay" >Navigation Display</a></li>
+				<li><a href="#LightControl" class="ui-btn-active">Control Lights</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="NavDisplay" data-theme="b" data-fullscreen="true" >
+	<div data-role="header" data-theme="a">
+        <h1>Navigation Menu</h1>
+        <a href="#home" data-icon="home" data-theme="c">Home</a>
+    </div><!-- /header -->
+    
+     <div class="content" data-role ="content" >
+		<div id="map_canvas"></div>
+		
+		<div class="camera-stream">
+			On-board camera stream goes here
+		</div>
+	</div>
+	
+	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#Drive" >Drive</a></li>
+				<li><a href="#NavDisplay" class="ui-btn-active">Navigation Display</a></li>
+				<li><a href="#LightControl">Control Lights</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div data-role="page" id="Drive" data-theme="b"  data-fullscreen="true">
+
+ 	<div data-role="header" data-theme="a"  >
+		<h1>Drive</h1>
+		<a href="#home" data-icon="home" data-theme="c">Home</a>
+	</div>
+
+ 	<div class="content" data-role="content" >
+	
+		<div class="drive-content">
+	
+     		<div class="drive-control">
+				<div class="buttons-container">
+					
+					<div id="full-ahead"  >
+						<img id="full-throttle-highlight" class="extreme-buttons" src="img/full-throttle-hl.png" />
+					 	<img id="full-throttle" class="extreme-buttons" src="img/full-throttle.png" />
+					</div>
+					
+					<div id="upper-button">
+	
+						<div class="drive-button" id="move-forward"  >
+						 	<img class="img-arrow" src="img/forward.png" />
+						 	
+						</div>
+					
+					</div>		
+				
+					<div class="lower-buttons">
+						<div class="drive-button" id="turn-portside"  >
+						 	<img class="img-arrow" src="img/left.png" />
+						</div>
+						
+						<div class="drive-button" id="move-backward" >
+							<img id="down-button-hl" class="img-arrow" src="img/down-hl.png" />
+						 	<img id="down-button" class="img-arrow" src="img/down.png" />
+						</div>
+					
+						<div class="drive-button" id="turn-starboard" >
+					 		
+					 		<img class="img-arrow" src="img/right.png" />
+						</div>
+					</div>
+					
+					<div id="full-astern" >
+					 	<img class="extreme-buttons" src="img/full-astern.png" />
+					</div>
+					
+					<div  id="stop-button" >
+					 	<img class="large-buttons" src="img/stop.png" />
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+
+
+			
+		<!-- 		<div id="rudder">
+    			<div>
+    				<label> Rudder Angle Indicator </label>
+    			</div>
+    			<div id="rudder-gauge">
+					
+ 					<div  style="margin-left:auto; margin-right:auto" dojoType="dojox.widget.AnalogGauge" id='rudder-indicator' width="400" height="100px"
+				cx="225" cy="200" radius="150" startAngle="-90" endAngle="90" useRangeStyles="0" 
+				hideValues="true" color: "white" majorTicks="{length: 10, offset: 110, interval: 10, color: 'gray'}" 
+				minorTicks="{length: 5, offset: 110, interval: 5, color: 'gray'}"	>
+			   
+						<div dojoType="dojox.widget.gauge.Range" low="0" high="50" hover="0-40" color="{'color': 'black'}">
+						</div>
+						<div dojoType="dojox.widget.gauge.Range" low="-50" high="0" color="{'color': 'black'}">
+						</div>
+					</div>
+				</div>
+    		</div> --> <!-- rudder -->
+  				
+  			<!-- 	<div id="thrust-indicator">
+       				<div data-role="fieldcontain" >
+						<label for="slider">Thrust Level</label>
+						<input  type="range" name="slider" id="thrust-slider" value="0" min="-100" max="100"/>
+					</div>
+	       		</div>--> <!-- thrust indicator --> 
+			
+		
+	</div> 
+	
+	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#Drive" class="ui-btn-active" >Drive</a></li>
+				<li><a href="#NavDisplay" ">Navigation Display</a></li>
+				<li><a href="#LightControl">Control Lights</a></li>
+			</ul>
+		</div>
+	</div>
+    
+    		
+</div>
 
 </body>
 </html>

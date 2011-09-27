@@ -1,18 +1,7 @@
 
-/*$(document).live("mobileinit", function(){
-     $.mobile.pushStateEnabled = false;
-});
-*/
-
-
-
-
 $('#Drive').live('pageshow',function(event){
 	
 	drive();
-	showGauge();
-//	rudderAngleIndicator();
-	
 });
 
 
@@ -30,7 +19,6 @@ function showHighLight(elementID) {
 	document.getElementById(elementID).style.display = "block";	
 } 
 function removeHighLight(elementID){
-//	document.getElementById(elementID).style.display = "none";
 	$('#' + elementID).hide();	
 
 }
