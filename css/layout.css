@@ -1,16 +1,36 @@
 body{
 	
+}
+#full-astern{
+	display: block;
+	text-align:center;
+	
+}
+#stop-button-hl{
+	display:none;
+}
+#full-astern-button-hl{
+	display: none;
+}
+#ps-button-hl{
+	display:none;
+}
 
+#sb-button-hl{
+	display:none;
+}
+
+#forward-button-hl{
+	display:none;
 }
 #down-button-hl{
 	display:none;
 }
 
-#full-throttle-highlight{
+#full-throttle-hl{
 	display:none;
-	height: 90px;
-	width: 90px;
 }
+
 
 #toggleswitch {  
     width: 120px; 
@@ -52,6 +72,7 @@ body{
 	width: 100px;
 }
 
+
 .drive-control{
 	
 	
@@ -63,7 +84,7 @@ body{
 	width:90px;
 }
 
-#stop-button{
+#stop{
 	display: inline-block;
 	margin-top: 30px
 }
@@ -73,6 +94,7 @@ body{
 }
 
 .extreme-buttons{
+	
 	height: 60px;
 	width: 60px;
 }
