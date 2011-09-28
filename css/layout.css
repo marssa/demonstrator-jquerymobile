@@ -59,8 +59,8 @@ body{
    }
 
 .large-buttons{
-	height: 150px;
-	width:150px;
+	height: 90px;
+	width:90px;
 }
 
 #stop-button{
@@ -73,8 +73,8 @@ body{
 }
 
 .extreme-buttons{
-	height: 90px;
-	width: 90px;
+	height: 60px;
+	width: 60px;
 }
 
 .footer{
@@ -86,8 +86,8 @@ body{
 }
 
 .buttons-container{
-	width: 600px;
-	margin: 0px auto;
+	width: 280px;
+	margin: 0px auto; 
 	text-align: center;
 }
 
@@ -133,8 +133,8 @@ body{
 }
   
 .img-arrow{
-	height: 120px;
-	width: 120px;
+	height: 70px;
+	width: 70px;
 }
 
 #map_canvas { 

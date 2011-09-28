@@ -29,27 +29,27 @@ function drive(){
 		clearInterval(t);
 		removeHighLight('down-button-hl');
 		showHighLight('down-button');
-		
+		   
 	});
 	
 
-	$("#turn-starboard").live('click', function(event) {
+	$("#turn-starboard").live('vclick', function(event) {
 		$.getJSON("http://localhost:8182/rudder/rotate/true");
 	});
 
-	$("#turn-portside").live('click', function(event) {
+	$("#turn-portside").live('vclick', function(event) {
 		$.getJSON("http://localhost:8182/rudder/rotate/false");
 	});
 	
-	$("#stop-button").live('click', function(event) {		
+	$("#stop-button").live('vclick', function(event) {		
 		$.getJSON("http://localhost:8182/motor/speed/0");
 	});
 	
-	$("#full-astern").live('click', function(event) {		
+	$("#full-astern").live('vclick', function(event) {		
 		$.getJSON("http://localhost:8182/motor/speed/-100");		
 	});
 	
-	$("#full-ahead").live('click', function(event) {		
+	$("#full-ahead").live('vclick', function(event) {		
 		removeHighLight('full-throttle');
 		showHighLight('full-throttle-highlight');
 		
@@ -57,7 +57,7 @@ function drive(){
 		$.getJSON("http://localhost:8182/motor/speed/100");		
 	});
 	
-	$("#full-ahead").live('mouseup', function(event) {
+	$("#full-ahead").live('vclick', function(event) {
 		
 		showHighLight('full-throttle-highlight');
 		removeHighLight('full-throttle');
