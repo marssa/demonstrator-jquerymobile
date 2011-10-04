@@ -1,18 +1,21 @@
 
 $('#Drive').live('pageshow',function(event){
-	
 	drive();
 });
 
 
 
 $('#LightControl').live('pageshow',function(event){
-
-
-//TODO - refresh methods on checkboxes, sliders and radio buttons not working.
-
-	
-
+	 $("#Nav-Lights-Slider").bind('change', function(event) {
+		 
+		 var mySwitch = $("select#Nav-Lights-Slider");
+		 if (mySwitch[0].selectedIndex = 1){
+			 $.getJSON("http://localhost:8182/lighting/navigationLights/false");
+		 } else {
+			 $.getJSON("http://localhost:8182/lighting/navigationLights/true");
+		 }
+			 
+		 });
 });
 
 function showHighLight(elementID) {

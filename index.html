@@ -21,9 +21,9 @@
     <script type="text/javascript" src="js/drive.js"></script> 
         
     <!-- google -->
-      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
- 	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true">	</script>  
+ 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true">	</script>  
 	
 
 </head>
@@ -63,28 +63,20 @@
 		
 	<div data-role="content" class="content" >
 	
-		<div data-role="fieldcontain" id="input" >
-		    <fieldset data-role="controlgroup" data-type="horizontal" >
-		    	<legend>Navigation Lights: </legend>
-		    	
-		    	<input type="radio" name="switchNavLights" id="navLights-on" value="1" data-theme="c" onclick="setRadio(this);" />
-		        <label for="navLights-on">On</label>
-		
-		        <input type="radio" name="switchNavLights" id="navLights-off" value="0" data-theme="c" onclick="setRadio(this);"   />
-		        <label for="navLights-off">Off</label>
-		    </fieldset>			
-		</div>
-		
-		<div data-role="fieldcontain" >
-		    <fieldset data-role="controlgroup" data-type="horizontal" >
-		    	<legend>Undwerwater Lights: </legend>
-		    	
-		    	<input type="radio" name="switchUwLights" id="UWlights-on" value="1" data-theme="c"> 
-		        <label for="UWlights-on">On</label>
-		
-		        <input type="radio" name="switchUwLights" id="UWlights-off" value="0" data-theme="c"  />
-		        <label for="UWlights-off">Off</label>
-		    </fieldset>			
+	    <div data-role="fieldcontain">
+			<label for="Nav-Lights-Slider">Navigation Lights:</label>
+			<select name="slider1" id="Nav-Lights-Slider" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select> 
+		</div>		
+					
+		<div data-role="fieldcontain">
+			<label for="UW-Lights-Slider">Underwater Lights</label>
+			<select name="slider2" id="UW-Lights-Slider" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select> 
 		</div>
 	</div>
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
@@ -104,13 +96,24 @@
         <a href="#home" data-icon="home" data-theme="c">Home</a>
     </div><!-- /header -->
     
-     <div class="content" data-role ="content" >
-		<div id="map_canvas"></div>
+   
+   
+    <div data-role ="content" id="content1">
 		
-		<div class="camera-stream">
-			On-board camera stream goes here
+		<div id="map_container">
+			<div id="map_canvas"></div>
 		</div>
-	</div>
+		
+		<div id="markers-input">
+			<ul id="markers-list" data-role="listview" data-theme="d" data-inset="true" data-dividertheme="b">
+				<li id="markers-divider" data-role="list-divider">Waypoints</li>
+			
+			</ul>
+		</div>
+	
+			
+	</div>	
+	
 	
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
 		<div data-role="navbar">
