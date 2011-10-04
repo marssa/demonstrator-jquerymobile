@@ -1,15 +1,13 @@
 $('#NavDisplay').live("pageshow", function() {
 	
-	//Replaced by co-ordinates retrieved from the GPS sensors
-	
+//Replaced by co-ordinates retrieved from the GPS sensors
 /*	if(navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function(position){
 			initialize(position.coords.latitude,position.coords.longitude);
 		});
 	} 
-	
 */
-	initialize(35.889013, 14.517207);
+initialize(35.889013, 14.517207);
 });
 
 var map;
@@ -35,27 +33,30 @@ function initialize(lat,lng) {
     	animation: google.maps.Animation.DROP
    	});
     
+    //infoWindow pop-up to enter name of new Waypoint
     infoWindow = new google.maps.InfoWindow();
     
-    //Marker's  tag
-/*    var contentString1 = '<div id="content"><div id="siteNotice"><p class="info_box"></p><p>The DemonStrator is here!</p><a href="www.marssa.org">www.marssa.org</a></div> </div>';
-
-    var infowindow1 = new google.maps.InfoWindow({
-    content: contentString1,
-    maxWidth: 200
-    });
-
-    google.maps.event.addListener(marker, 'click', function() {
-    	infowindow1.open(map,marker);
-    });*/
-    
+    //line between markers
+    var polyOptions = {
+    	    strokeColor: '#E0E01B',
+    	    strokeOpacity: 1.0,
+    	    strokeWeight: 3
+    	  };
+    poly = new google.maps.Polyline(polyOptions);
+    poly.setMap(map);
+   
     //Listener to click on map to add marker in that position    
     google.maps.event.addListener(map, 'click', function(event) {
+    	addLatLng(event); //for polyline
     	placeMarker(event.latLng);
       });
-}  
+     
+}
 
-
+function addLatLng(event){
+	var path = poly.getPath();
+	path.push(event.latLng);
+}
 
 function placeMarker(location) {
 	
@@ -68,7 +69,6 @@ function placeMarker(location) {
 	 infoWindow.setContent(contentString);
 	 infoWindow.open(map,marker1);
 }
-
 
 $('#submit-button').live("click", function() {
 	
