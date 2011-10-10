@@ -6,9 +6,15 @@
     
    	<meta name="viewport" content="width=device-width, initial-scale=1"> 
    
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script> -->
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css" />
+	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.json-2.3.js"></script>
   	
   	
    	<!-- personal	 -->
@@ -62,23 +68,25 @@
     </div><!-- /header -->
 		
 	<div data-role="content" class="content" >
-	
+   
 	    <div data-role="fieldcontain">
-			<label for="Nav-Lights-Slider">Navigation Lights:</label>
-			<select name="slider1" id="Nav-Lights-Slider" data-role="slider">
+			<label for="slider">Navigation Lights:</label>
+			<select data-role="slider" name="slider" id="slider" >
 				<option value="off">Off</option>
-				<option value="on">On</option>
+				<option value="on" selected="selected">On</option>
 			</select> 
 		</div>		
 					
-		<div data-role="fieldcontain">
+<!-- 	<div data-role="fieldcontain">
 			<label for="UW-Lights-Slider">Underwater Lights</label>
-			<select name="slider2" id="UW-Lights-Slider" data-role="slider">
+			<select  data-role="slider" name="slider" id="UW-Lights-Slider">
 				<option value="off">Off</option>
 				<option value="on">On</option>
 			</select> 
-		</div>
-	</div>
+		</div> -->
+	
+	</div> <!-- Content -->
+	
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
 		<div data-role="navbar">
 			<ul>
@@ -95,26 +103,27 @@
         <h1>Navigation Menu</h1>
         <a href="#home" data-icon="home" data-theme="c">Home</a>
     </div><!-- /header -->
-    
-   
    
     <div data-role ="content" id="content1">
-		
+ 
+  
 		<div id="map_container">
 			<div id="map_canvas"></div>
 		</div>
 		
-		<div id="markers-input">
+ <!-- 	<div id="markers-input">
 			<ul id="markers-list" data-role="listview" data-theme="d" data-inset="true" data-dividertheme="b">
 				<li id="markers-divider" data-role="list-divider">Waypoints</li>
-			
 			</ul>
-		</div>
-	
+		</div> --> 
+
+	 	<div id="markers-input" data-role="collapsible-set">
 			
+		</div> 
+
+	
 	</div>	
-	
-	
+
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
 		<div data-role="navbar">
 			<ul>
@@ -126,6 +135,38 @@
 	</div>
 </div>
 
+<div data-role="page" id="Waypoints" data-theme="b" data-fullscreen="true" >
+	<div data-role="header" data-theme="a">
+        <h1>Navigation Menu - Waypoints</h1>
+        <a href="#NavDisplay" data-icon="back" data-theme="c">Back</a>
+    </div><!-- /header -->
+   
+    <div data-role ="content">
+ 
+  		<div id="waypoints-list-container">			
+				<ul id="waypoints-list" data-role="listview" data-theme="c" data-dividertheme="d">
+				
+					<li data-role="list-divider">Form elements</li>
+					
+
+				</ul>
+		</div>
+		
+	
+	</div>	
+
+	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#Drive" >Drive</a></li>
+				<li><a href="#NavDisplay" class="ui-btn-active">Navigation Display</a></li>
+				<li><a href="#LightControl">Control Lights</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
 <div data-role="page" id="Drive" data-theme="b"  data-fullscreen="true">
 
  	<div data-role="header" data-theme="a"  >
@@ -135,6 +176,10 @@
 
  	<div class="content" data-role="content" >
 	
+		<div>
+			<input id="percent-thrust" type="text" value="" style="width:50px"/>
+		</div>	
+		
 		<div class="drive-content">
 	
      		<div class="drive-control">

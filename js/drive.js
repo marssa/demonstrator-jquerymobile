@@ -3,7 +3,7 @@ function drive(){
 	var t;
 	
 	$("#move-forward").live('vmousedown', function(event) {
-		$.getJSON("http://localhost:8182/motor/speed/increase");
+		$.getJSON("motor/speed/increase");
 		removeHighLight('forward-button');
 		showHighLight('forward-button-hl');
 		t = setInterval("increaseSpeed()",500);
@@ -18,7 +18,7 @@ function drive(){
 	});
 	
 	$("#move-backward").live('vmousedown', function(event) {
-		$.getJSON("http://localhost:8182/motor/speed/decrease");
+		$.getJSON("motor/speed/decrease");
 		removeHighLight('down-button');
 		showHighLight('down-button-hl');
 		t = setInterval("decreaseSpeed()",500);
@@ -34,7 +34,7 @@ function drive(){
 	
 
 	$("#turn-starboard").live('vmousedown', function(event) {
-		$.getJSON("http://localhost:8182/rudder/rotate/true");
+		$.getJSON("rudder/rotate/true");
 		removeHighLight('sb-button');
 		showHighLight('sb-button-hl');
 		t = setInterval("turnSB()",500);
@@ -48,7 +48,7 @@ function drive(){
 	});
 
 	$("#turn-portside").live('vmousedown', function(event) {
-		$.getJSON("http://localhost:8182/rudder/rotate/false");
+		$.getJSON("rudder/rotate/false");
 		removeHighLight('ps-button');
 		showHighLight('ps-button-hl');
 		t = setInterval("turnPS()",500);
@@ -71,32 +71,59 @@ function drive(){
 	});	
 	
 	$("#full-astern").live('vclick', function(event) {		
-		$.getJSON("http://localhost:8182/motor/speed/-100");
+		$.getJSON("motor/speed/-100");
 	
 	});
 	
 	$("#full-ahead").live('vclick', function(event) {		
-		$.getJSON("http://localhost:8182/motor/speed/100");
+		$.getJSON("motor/speed/100");
 
 	});	
 }
 
 
 function decreaseSpeed(){
-	$.getJSON("http://localhost:8182/motor/speed/decrease");
+	$.getJSON("motor/speed/decrease");
 }
 
 function increaseSpeed(){
-	$.getJSON("http://localhost:8182/motor/speed/increase");
+	$.getJSON("motor/speed/increase");
 }
 
 function stop(){
-	$.getJSON("http://localhost:8182/motor/speed/0");
+	$.getJSON("motor/speed/0");
 }
 function turnSB(){
-	$.getJSON("http://localhost:8182/rudder/rotate/true");
+	$.getJSON("rudder/rotate/true");
 }
 function turnPS(){
-	$.getJSON("http://localhost:8182/rudder/rotate/false");
+	$.getJSON("rudder/rotate/false");
 }
 
+function currentSpeed(){
+//var a =	$.getJSON("http://localhost:8182/motor/speed");
+//	alert('test');
+//
+	a = $.getJSON("http://localhost:8182/motor/speed");
+	$.parseJSON(a);
+	
+	alert(a);
+	//$('#percent-thrust').value = a['responsetext'];
+	
+	
+/*	$.ajax({
+        async: false,
+        type: "POST",
+        url: "http://localhost:8182/motor/speed",
+        contentType: "application/json; charset=utf-8",
+        data: "{}",
+        dataType: "json",
+        success: function (result) {
+        	//jQuery.parseJSON(result.d);
+        	alert(jQuery.parseJSON(result.d));
+        },
+        error: AjaxFailed
+    });
+	*/
+	
+}

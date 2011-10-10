@@ -1,12 +1,20 @@
 
-$('#Drive').live('pageshow',function(event){
+$('#Drive').live('pagebeforeshow',function(event){
 	drive();
+	currentSpeed();
 });
 
+$('#Waypoints').live('pagebeforeshow',function(event){
 
+	
+});
+	
 
-$('#LightControl').live('pageshow',function(event){
-	 $("#Nav-Lights-Slider").bind('change', function(event) {
+/*$('#LightControl').live('pageshow',function(event){
+	
+	
+});
+/*	 $("#Nav-Lights-Slider").bind('change', function(event) {
 		 
 		 var mySwitch = $("select#Nav-Lights-Slider");
 		 if (mySwitch[0].selectedIndex = 1){
@@ -16,7 +24,7 @@ $('#LightControl').live('pageshow',function(event){
 		 }
 			 
 		 });
-});
+}); */
 
 function showHighLight(elementID) {
 	document.getElementById(elementID).style.display = "block";	
