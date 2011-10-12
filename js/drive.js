@@ -3,7 +3,13 @@ function drive(){
 	var t;
 	
 	$("#move-forward").live('vmousedown', function(event) {
-		$.getJSON("motor/increaseSpeed");
+		$.ajax({  
+			  url: 'motor/increaseSpeed',  
+			  dataType: 'json',  
+			  data: data,  
+			  async: true
+			});  
+		
 		removeHighLight('forward-button');
 		showHighLight('forward-button-hl');
 		t = setInterval("increaseSpeed()",500);
@@ -14,11 +20,17 @@ function drive(){
 		clearInterval(t);
 		removeHighLight('forward-button-hl');
 		showHighLight('forward-button');
-		
 	});
 	
 	$("#move-backward").live('vmousedown', function(event) {
-		$.getJSON("motor/decreaseSpeed");
+		
+		$.ajax({  
+			  url: 'motor/decreaseSpeed',  
+			  dataType: 'json',  
+			  data: data,  
+			  async: true
+		});  
+		
 		removeHighLight('down-button');
 		showHighLight('down-button-hl');
 		t = setInterval("decreaseSpeed()",500);
@@ -29,12 +41,18 @@ function drive(){
 		clearInterval(t);
 		removeHighLight('down-button-hl');
 		showHighLight('down-button');
-		   
 	});
 	
 
 	$("#turn-starboard").live('vmousedown', function(event) {
-		$.getJSON("rudder/rotateMore/true");
+		
+		$.ajax({  
+			  url: 'rudder/rotateMore/true',  
+			  dataType: 'json',  
+			  data: data,  
+			  async: true
+			});  
+		
 		removeHighLight('sb-button');
 		showHighLight('sb-button-hl');
 		t = setInterval("turnSB()",500);
@@ -44,11 +62,17 @@ function drive(){
 		clearInterval(t)
 		removeHighLight('sb-button-hl');
 		showHighLight('sb-button');
-		
 	});
 
 	$("#turn-portside").live('vmousedown', function(event) {
-		$.getJSON("rudder/rotateMore/false");
+			
+		$.ajax({  
+			  url: 'rudder/rotateMore/false',  
+			  dataType: 'json',  
+			  data: data,  
+			  async: true
+		}); 
+		
 		removeHighLight('ps-button');
 		showHighLight('ps-button-hl');
 		t = setInterval("turnPS()",500);
@@ -62,41 +86,91 @@ function drive(){
 	
 	
 	$("#stop").live('vclick', function(event) {	
-		$.getJSON("motor/speed/0");
+		
+		$.ajax({  
+			  url: 'motor/speed/0',  
+			  dataType: 'json',  
+			  data: data,  
+			  async: true
+		}); 
+		
 		removeHighLight('stop-button');
 		showHighLight('stop-button-hl');
-		
 		t=setTimeout("removeHighLight('stop-button-hl');",200);
 		t=setTimeout("showHighLight('stop-button');",200);
 	});	
 	
 	$("#full-astern").live('vclick', function(event) {		
-		$.getJSON("motor/speed/-100");
-	
+
+		$.ajax({  
+			  url: 'motor/speed/-100',  
+			  dataType: 'json',  
+			  data: data,  
+			  async: true
+		}); 
+
 	});
 	
 	$("#full-ahead").live('vclick', function(event) {		
-		$.getJSON("motor/speed/100");
+		
+		$.ajax({  
+			  url: 'motor/speed/100',  
+			  dataType: 'json',  
+			  data: data,  
+			  async: true
+		}); 
 
 	});	
 }
 
 function decreaseSpeed(){
-	$.getJSON("motor/speed/decrease");
+	
+	$.ajax({  
+		  url: 'motor/speed/decrease',  
+		  dataType: 'json',  
+		  data: data,  
+		  async: true
+	}); 
 }
 
 function increaseSpeed(){
-	$.getJSON("motor/speed/increase");
+
+	$.ajax({  
+		  url: 'motor/speed/increase',  
+		  dataType: 'json',  
+		  data: data,  
+		  async: true
+	}); 
 }
 
 function stop(){
-	$.getJSON("motor/speed/0");
+
+	$.ajax({  
+		  url: 'motor/speed/0',  
+		  dataType: 'json',  
+		  data: data,  
+		  async: true
+	}); 
+	
 }
 function turnSB(){
-	$.getJSON("rudder/rotate/true");
+	
+	$.ajax({  
+		  url: 'motor/speed/true',  
+		  dataType: 'json',  
+		  data: data,  
+		  async: true
+	}); 
+	
 }
 function turnPS(){
-	$.getJSON("rudder/rotate/false");
+	
+	$.ajax({  
+		  url: 'rudder/rotate/false',  
+		  dataType: 'json',  
+		  data: data,  
+		  async: true
+	}); 
 }
 
 function currentSpeed(){

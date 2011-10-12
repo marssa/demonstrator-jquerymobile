@@ -3,20 +3,19 @@ $('#Drive').live('pagebeforeshow',function(event){
 	
 	setInterval(function() {
 		$.ajax({
+			async: true,
 			url: "motionControlPage/rudderAndSpeed",
 			type: "GET",
-			//context: document.body,
 			dataType: "json",
 			success: function(result){
-	
-				$('#percent-thrust').val(result['motor']['value']);		}
+				$('#percent-thrust').val(result['motor']['value']);	
+				$('#rudder-angle').val(result['rudder']['value']);	
+			}
 		});
-	
 	}, 500);
 });
 
 $('#Waypoints').live('pagebeforeshow',function(event){
-
 	
 });
 	
@@ -25,7 +24,6 @@ function showHighLight(elementID) {
 } 
 function removeHighLight(elementID){
 	$('#' + elementID).hide();	
-
 }
 
 
