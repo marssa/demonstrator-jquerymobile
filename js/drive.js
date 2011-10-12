@@ -67,8 +67,8 @@ function drive(){
 	$("#turn-portside").live('vmousedown', function(event) {
 			
 		$.ajax({  
-			  url: 'rudder/rotateMore/false',  
-			  dataType: 'json',  
+			  url: "rudder/rotateMore/false",  
+			  dataType: "json",  
 			  data: data,  
 			  async: true
 		}); 
@@ -88,8 +88,8 @@ function drive(){
 	$("#stop").live('vclick', function(event) {	
 		
 		$.ajax({  
-			  url: 'motor/speed/0',  
-			  dataType: 'json',  
+			  url: "motor/speed/0",  
+			  dataType: "json",  
 			  data: data,  
 			  async: true
 		}); 
@@ -103,8 +103,8 @@ function drive(){
 	$("#full-astern").live('vclick', function(event) {		
 
 		$.ajax({  
-			  url: 'motor/speed/-100',  
-			  dataType: 'json',  
+			  url: "motor/speed/-100",  
+			  dataType: "json",  
 			  data: data,  
 			  async: true
 		}); 
@@ -114,8 +114,8 @@ function drive(){
 	$("#full-ahead").live('vclick', function(event) {		
 		
 		$.ajax({  
-			  url: 'motor/speed/100',  
-			  dataType: 'json',  
+			  url: "motor/speed/100",  
+			  dataType: "json",  
 			  data: data,  
 			  async: true
 		}); 
@@ -126,8 +126,8 @@ function drive(){
 function decreaseSpeed(){
 	
 	$.ajax({  
-		  url: 'motor/speed/decrease',  
-		  dataType: 'json',  
+		  url: "motor/speed/decrease",  
+		  dataType: "json",  
 		  data: data,  
 		  async: true
 	}); 
@@ -136,8 +136,8 @@ function decreaseSpeed(){
 function increaseSpeed(){
 
 	$.ajax({  
-		  url: 'motor/speed/increase',  
-		  dataType: 'json',  
+		  url: "motor/speed/increase",  
+		  dataType: "json",  
 		  data: data,  
 		  async: true
 	}); 
@@ -146,8 +146,8 @@ function increaseSpeed(){
 function stop(){
 
 	$.ajax({  
-		  url: 'motor/speed/0',  
-		  dataType: 'json',  
+		  url: "motor/speed/0",  
+		  dataType: "json",  
 		  data: data,  
 		  async: true
 	}); 
@@ -156,8 +156,8 @@ function stop(){
 function turnSB(){
 	
 	$.ajax({  
-		  url: 'motor/speed/true',  
-		  dataType: 'json',  
+		  url: "motor/speed/true",  
+		  dataType: "json",  
 		  data: data,  
 		  async: true
 	}); 
@@ -166,8 +166,8 @@ function turnSB(){
 function turnPS(){
 	
 	$.ajax({  
-		  url: 'rudder/rotate/false',  
-		  dataType: 'json',  
+		  url: "rudder/rotate/false",  
+		  dataType: "json",  
 		  data: data,  
 		  async: true
 	}); 
