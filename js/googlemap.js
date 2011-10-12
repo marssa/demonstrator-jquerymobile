@@ -2,12 +2,12 @@ $('#NavDisplay').live("pageshow", function() {
 	
 	//var testLatLng= {"class":"mise.marssa.data_types.composite_datatypes.Coordinate","latitude":{"DMS":{"class":"mise.marssa.data_types.float_datatypes.DegreesFloat","value":35.889013},"class":"mise.marssa.data_types.composite_datatypes.Latitude","degrees":{"class":"mise.marssa.data_types.integer_datatypes.DegreesInteger","value":0},"minutes":{"class":"mise.marssa.data_types.integer_datatypes.MInteger","value":21},"seconds":{"class":"mise.marssa.data_types.float_datatypes.MFloat","value":0.0}},"longitude":{"DMS":{"class":"mise.marssa.data_types.float_datatypes.DegreesFloat","value":14.517207},"class":"mise.marssa.data_types.composite_datatypes.Longitude","degrees":{"class":"mise.marssa.data_types.integer_datatypes.DegreesInteger","value":78},"minutes":{"class":"mise.marssa.data_types.integer_datatypes.MInteger","value":48},"seconds":{"class":"mise.marssa.data_types.float_datatypes.MFloat","value":1.2}}};
 	setInterval(function() {
-		$.getJSON("gps/coordinates");
+		LatLng = $.getJSON("gps/coordinates");
 	}, 5000);
 		
-	jQuery.parseJSON(testLatLng);
-	lat = testLatLng['latitude']['DMS']['value'];
-	lng = testLatLng['longitude']['DMS']['value'];
+	//jQuery.parseJSON(testLatLng);
+	lat = LatLng['latitude']['DMS']['value'];
+	lng = LatLng['longitude']['DMS']['value'];
 	initMap('map_canvas', lat, lng);
 	initPolyline();
 });
