@@ -1,15 +1,18 @@
 $('#Drive').live('pagebeforeshow',function(event){
 	drive();
 	
-	$.ajax({
-		url: "motionControlPage/rudderAndSpeed",
-		type: "GET",
-		//context: document.body,
-		dataType: "json",
-		success: function(result){
-			$('#percent-thrust').val(result['motor']['value']);		}
-	});
+	setInterval(function() {
+		$.ajax({
+			url: "motionControlPage/rudderAndSpeed",
+			type: "GET",
+			//context: document.body,
+			dataType: "json",
+			success: function(result){
 	
+				$('#percent-thrust').val(result['motor']['value']);		}
+		});
+	
+	}, 500);
 });
 
 $('#Waypoints').live('pagebeforeshow',function(event){
