@@ -3,7 +3,7 @@ function drive(){
 	var t;
 	
 	$("#move-forward").live('vmousedown', function(event) {
-		$.getJSON("motor/speed/increase");
+		$.getJSON("motor/increaseSpeed");
 		removeHighLight('forward-button');
 		showHighLight('forward-button-hl');
 		t = setInterval("increaseSpeed()",500);
@@ -18,7 +18,7 @@ function drive(){
 	});
 	
 	$("#move-backward").live('vmousedown', function(event) {
-		$.getJSON("motor/speed/decrease");
+		$.getJSON("motor/decreaseSpeed");
 		removeHighLight('down-button');
 		showHighLight('down-button-hl');
 		t = setInterval("decreaseSpeed()",500);
@@ -34,7 +34,7 @@ function drive(){
 	
 
 	$("#turn-starboard").live('vmousedown', function(event) {
-		$.getJSON("rudder/rotate/true");
+		$.getJSON("rudder/rotateMore/true");
 		removeHighLight('sb-button');
 		showHighLight('sb-button-hl');
 		t = setInterval("turnSB()",500);
@@ -48,7 +48,7 @@ function drive(){
 	});
 
 	$("#turn-portside").live('vmousedown', function(event) {
-		$.getJSON("rudder/rotate/false");
+		$.getJSON("rudder/rotateMore/false");
 		removeHighLight('ps-button');
 		showHighLight('ps-button-hl');
 		t = setInterval("turnPS()",500);
