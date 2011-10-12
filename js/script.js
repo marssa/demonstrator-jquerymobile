@@ -1,7 +1,18 @@
 
 $('#Drive').live('pagebeforeshow',function(event){
 	drive();
-	currentSpeed();
+	//currentSpeed();
+	
+	$.ajax({
+		url: "motionControlPage/rudderAndSpeed",
+		type: "GET",
+		//context: document.body,
+		dataType: "json",
+		success: function(result){
+			alert(result['motor']['value']);
+		}
+	});
+	
 });
 
 $('#Waypoints').live('pagebeforeshow',function(event){

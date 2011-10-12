@@ -62,7 +62,7 @@ function drive(){
 	
 	
 	$("#stop").live('vclick', function(event) {	
-		$.getJSON("http://localhost:8182/motor/speed/0");
+		$.getJSON("motor/speed/0");
 		removeHighLight('stop-button');
 		showHighLight('stop-button-hl');
 		
@@ -101,29 +101,6 @@ function turnPS(){
 }
 
 function currentSpeed(){
-//var a =	$.getJSON("http://localhost:8182/motor/speed");
-//	alert('test');
-//
-	a = $.getJSON("http://localhost:8182/motor/speed");
-	$.parseJSON(a);
-	
-	alert(a);
-	//$('#percent-thrust').value = a['responsetext'];
-	
-	
-/*	$.ajax({
-        async: false,
-        type: "POST",
-        url: "http://localhost:8182/motor/speed",
-        contentType: "application/json; charset=utf-8",
-        data: "{}",
-        dataType: "json",
-        success: function (result) {
-        	//jQuery.parseJSON(result.d);
-        	alert(jQuery.parseJSON(result.d));
-        },
-        error: AjaxFailed
-    });
-	*/
-	
+
+
 }
