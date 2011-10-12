@@ -81,7 +81,6 @@ function drive(){
 	});	
 }
 
-
 function decreaseSpeed(){
 	$.getJSON("motor/speed/decrease");
 }
