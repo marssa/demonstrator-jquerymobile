@@ -3,29 +3,20 @@
 <html>
   <head>
     <title>jQuery Mobile theDemonStrator Front-end</title>
-    
    	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-   
-<!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script> -->
-	
- <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.js"></script> -->
-	
+ 	
+ <!-- JqueryMobile & Jquery -->	
  	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.0rc1.min.css" />
 	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.0rc1.js"></script> 
 	
-	<script type="text/javascript" src="js/jquery.json-2.3.js"></script>
-  	
-  	
-   	<!-- personal	 -->
+<!--<script type="text/javascript" src="js/jquery.json-2.3.js"></script>-->
+<!--    <script type="text/javascript" src="bindows_gauges/bindows_gauges.js"></script> -->
+<!--    <script type="text/javascript" src="js/rudder.js"></script> -->	
+
+<!-- personal	 -->
  	<link rel="stylesheet" type="text/css" href="css/layout.css" /> 
     <script type="text/javascript" src="js/script.js"></script>
-<!--    <script type="text/javascript" src="bindows_gauges/bindows_gauges.js"></script> -->
-<!--    <script type="text/javascript" src="js/rudder.js"></script> -->
     <script type="text/javascript" src="js/googlemap.js"></script>
     <script type="text/javascript" src="js/gauge.js"></script>
     <script type="text/javascript" src="js/drive.js"></script> 
@@ -34,13 +25,13 @@
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true">	</script>  
-	
 
 </head>
 
 <body > 
 
-<!-- Start of first page -->
+<!--First page -->
+<!--********** -->
 <div data-role="page" id="home" data-theme="b" data-fullscreen="true">
 
     <div class="header" data-role="header" data-theme="a"  >
@@ -48,21 +39,21 @@
     </div><!-- /header -->
 
 	<div class="content" data-role ="content" >
-    	    	 	
     	 	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a" >
     	 		<li data-role="list-divider">Select</li>
         		<li><a href="#Drive">Drive</a></li>
         		<li><a href="#LightControl">Light Control</a></li>
         		<li><a href="#NavDisplay">Navigation Display</a></li>
     		</ul>        
-    	
     </div><!-- /content -->
 
     <div data-role="footer" class="footer" data-theme="a"  data-position="fixed" >
         <h4>MARSSA</h4>
     </div><!-- /footer -->
 </div><!-- /page -->
+
 <!-- LightControl -->
+<!--************* --> <!-- NOTE: Toggle switch not rendering properly -->
 
 <div data-role="page" id="LightControl" data-theme="b" data-fullscreen="true" >
 	<div data-role="header" data-theme="a">
@@ -80,15 +71,7 @@
 				<option value="on" selected="selected">On</option>
 			</select> 
 		</div>		
-					
-<!-- 	<div data-role="fieldcontain">
-			<label for="UW-Lights-Slider">Underwater Lights</label>
-			<select  data-role="slider" name="slider" id="UW-Lights-Slider">
-				<option value="off">Off</option>
-				<option value="on">On</option>
-			</select> 
-		</div> -->
-	
+
 	</div> <!-- Content -->
 	
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
@@ -102,6 +85,9 @@
 	</div>
 </div>
 
+<!-- Navigation -->
+<!--*********** -->
+
 <div data-role="page" id="NavDisplay" data-theme="b" data-fullscreen="true" >
 	<div data-role="header" data-theme="a">
         <h1>Navigation Menu</h1>
@@ -109,23 +95,15 @@
     </div><!-- /header -->
    
     <div data-role ="content" id="content1">
- 
-  
+
 		<div id="map_container">
 			<div id="map_canvas"></div>
 		</div>
-		
- <!-- 	<div id="markers-input">
-			<ul id="markers-list" data-role="listview" data-theme="d" data-inset="true" data-dividertheme="b">
-				<li id="markers-divider" data-role="list-divider">Waypoints</li>
-			</ul>
-		</div> --> 
 
 	 	<div id="markers-input" data-role="collapsible-set">
 			
 		</div> 
 
-	
 	</div>	
 
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
@@ -138,6 +116,9 @@
 		</div>
 	</div>
 </div>
+
+<!-- Waypoints -->
+<!-- ********* -->
 
 <div data-role="page" id="Waypoints" data-theme="b" data-fullscreen="true" >
 	<div data-role="header" data-theme="a">
@@ -146,17 +127,11 @@
     </div><!-- /header -->
    
     <div data-role ="content">
- 
-  		<div id="waypoints-list-container">			
+  		<div id="waypoints-list-container">		<!-- to be filled dynamically -->	
 				<ul id="waypoints-list" data-role="listview" data-theme="c" data-dividertheme="d">
-				
 					<li data-role="list-divider">Form elements</li>
-					
-
 				</ul>
 		</div>
-		
-	
 	</div>	
 
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
@@ -170,6 +145,8 @@
 	</div>
 </div>
 
+<!-- Drive -->
+<!-- ***** -->
 
 <div data-role="page" id="Drive" data-theme="b"  data-fullscreen="true">
 
@@ -236,10 +213,8 @@
 				</div>
 			</div>
 		</div>
-
-
-			
-		<!-- 		<div id="rudder">
+		
+		<!-- <div id="rudder">
     			<div>
     				<label> Rudder Angle Indicator </label>
     			</div>
@@ -265,7 +240,6 @@
 					</div>
 	       		</div>--> <!-- thrust indicator --> 
 			
-		
 	</div> 
 	
 	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
@@ -277,8 +251,6 @@
 			</ul>
 		</div>
 	</div>
-    
-    		
 </div>
 
 </body>
