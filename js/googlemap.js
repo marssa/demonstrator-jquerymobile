@@ -1,37 +1,63 @@
 var coordinatesInterrupt;
-$('#NavDisplay').live('pageshow', function() {
-	coordinatesInterrupt = setInterval(function() {
-		var LatLng = $.getJSON("http://localhost:8182/gps/coordinates");
-	}, 5000); //polling coordinate
-	lat = LatLng['latitude']['DMS']['value'];
-	lng = LatLng['longitude']['DMS']['value'];
-	initMap('map_canvas', lat, lng);
-	initPolyline();
-});
-
-$('#NavDisplay').live('pagehide', function(event, ui) {
-	clearInterval(coordinatesInterrupt);
-	coordinatesInterrupt = null;
-});
-
 var polyLine;
 var tmpPolyLine;
 var markers = [];
 var vmarkers = [];
 var map = null;
 var infoWindow = null; 
+var boatMarker;
 var contentString = '<div data-role="fieldcontain" id="marker-form" style=" width: 200px; height: 75px"> ' +
 						'<label for="name">Enter  Waypoint Name:</label><br/><br/>'+
 						'<input type="text" id="textbox" name="wp-name" value=""  />' +
 						'<input type="submit" value="Add" id="submit-button" />'+
 					'</div>';
 
-function initMap(mapHolder, lat, lng){
+$('#NavDisplay').live('pageshow', function() {
+	
+	
+	initMap('map_canvas');
+
+	boatMarker = new google.maps.Marker({
+	      map: map,
+	});
+	coordinatesInterrupt = setInterval("trackPosition()",3000);
+	initPolyline();
+	
+});
+
+$('#NavDisplay').live('pagehide', function() {
+	clearInterval(coordinatesInterrupt);
+	coordinatesInterrupt = null;
+});
+
+function trackPosition(){
+	
+		$.ajax({
+			  url: "gps/coordinates",
+			  dataType: "json",
+			  data: {},
+			  async: false,
+			  success: function(coordinate){
+				 lat = coordinate['latitude']['DMS']['value'];
+				 lng = coordinate['longitude']['DMS']['value'];
+				 map.setCenter(new google.maps.LatLng(lat, lng));
+				 boatMarker.setPosition(new google.maps.LatLng(lat, lng));
+			  },
+			  error: function(result){
+				  clearInterval(coordinatesInterrupt);	
+				  alert(result.status);
+			 }
+		});
+	
+	
+}
+
+function initMap(mapHolder){
 	markers = [];
 	vmarkers = [];
 	var mapOptions = {
 		zoom: 18,
-		center: new  google.maps.LatLng(lat, lng), 
+		center: new google.maps.LatLng(35.88923, 14.51721), 
 		mapTypeId: google.maps.MapTypeId.HYBRID,
 		draggableCursor: 'auto',
 		draggingCursor: 'move',

@@ -58,8 +58,8 @@ $('#Drive').live('pageshow', function() {
 		setSpeed(0);
 		removeHighLight('stop-button');
 		showHighLight('stop-button-hl');
-		t=setTimeout("removeHighLight('stop-button-hl');",200);
-		t=setTimeout("showHighLight('stop-button');",200);
+		setTimeout("removeHighLight('stop-button-hl');",200);
+		setTimeout("showHighLight('stop-button');",200);
 	});
 
 	$("#full-astern").live('vclick', function(event) {

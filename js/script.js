@@ -1,11 +1,11 @@
-$('#Drive').live('pagebeforeshow',function(event){
-	drive();
-	currentSpeed();
-});
+//$('#Drive').live('pagebeforeshow',function(event){
+//	drive();
+//	currentSpeed();
+//});
 
-$('#Waypoints').live('pagebeforeshow',function(event){
+//$('#Waypoints').live('pagebeforeshow',function(event){
 	//TODO
-});
+//});
 	
 //common functions
 function showHighLight(elementID) {
