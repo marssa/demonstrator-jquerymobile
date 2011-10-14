@@ -1,11 +1,17 @@
-$('#NavDisplay').live("pageshow", function() {
-	setInterval(function() {
+var coordinatesInterrupt;
+$('#NavDisplay').live('pageshow', function() {
+	coordinatesInterrupt = setInterval(function() {
 		var LatLng = $.getJSON("http://localhost:8182/gps/coordinates");
 	}, 5000); //polling coordinate
 	lat = LatLng['latitude']['DMS']['value'];
 	lng = LatLng['longitude']['DMS']['value'];
 	initMap('map_canvas', lat, lng);
 	initPolyline();
+});
+
+$('#NavDisplay').live('pagehide', function(event, ui) {
+	clearInterval(coordinatesInterrupt);
+	coordinatesInterrupt = null;
 });
 
 var polyLine;
