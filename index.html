@@ -30,6 +30,7 @@
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/googlemap.js"></script>
     <script type="text/javascript" src="js/drive.js"></script>
+    <script type="text/javascript" src="js/planner.js"></script>
 </head>
 
 <body> 
@@ -48,6 +49,7 @@
         		<li><a href="#Drive">Drive</a></li>
         		<li><a href="#LightControl">Light Control</a></li>
         		<li><a href="#NavDisplay">Navigation Display</a></li>
+        		<li><a href="#planner">Path Planner</a></li>
     		</ul>        
     </div><!-- /content -->
 
@@ -81,6 +83,7 @@
 				<li><a href="#Drive" >Drive</a></li>
 				<li><a href="#NavDisplay" >Navigation Display</a></li>
 				<li><a href="#LightControl" class="ui-btn-active">Control Lights</a></li>
+				<li><a href="#planner">Path Planner</a></li>
 			</ul>
 		</div>
 	</div>
@@ -113,6 +116,7 @@
 				<li><a href="#Drive" >Drive</a></li>
 				<li><a href="#NavDisplay" class="ui-btn-active">Navigation Display</a></li>
 				<li><a href="#LightControl">Control Lights</a></li>
+				<li><a href="#planner">Path Planner</a></li>
 			</ul>
 		</div>
 	</div>
@@ -141,6 +145,7 @@
 				<li><a href="#Drive" >Drive</a></li>
 				<li><a href="#NavDisplay" class="ui-btn-active">Navigation Display</a></li>
 				<li><a href="#LightControl">Control Lights</a></li>
+				<li><a href="#planner">Path Planner</a></li>
 			</ul>
 		</div>
 	</div>
@@ -219,12 +224,45 @@
 		<div data-role="navbar">
 			<ul>
 				<li><a href="#Drive" class="ui-btn-active" >Drive</a></li>
-				<li><a href="#NavDisplay" ">Navigation Display</a></li>
+				<li><a href="#NavDisplay">Navigation Display</a></li>
 				<li><a href="#LightControl">Control Lights</a></li>
+				<li><a href="#planner">Path Planner</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
+
+<!--Planner -->
+<!--********** -->
+<div data-role="page" id="planner" data-theme="b" data-fullscreen="true">
+
+    <div class="header" data-role="header" data-theme="a"  >
+        <h1>Path Planner</h1>
+    </div><!-- /header -->
+
+	<div class="content" data-role="content" >
+		<div class="drive-content">
+	   		<div class="drive-control">
+				<div class="buttons-container">
+					<div class="drive-button" id="start-planner">
+				 		<img class="large-buttons" src="img/right.png" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#Drive">Drive</a></li>
+				<li><a href="#NavDisplay">Navigation Display</a></li>
+				<li><a href="#LightControl">Control Lights</a></li>
+				<li><a href="#planner" class="ui-btn-active">Path Planner</a></li>
+			</ul>
+		</div>
+	</div>
+</div><!-- /page -->
 
 </body>
 </html>
