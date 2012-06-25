@@ -45,7 +45,7 @@ function trackPosition(){
 			  },
 			  error: function(result){
 				  clearInterval(coordinatesInterrupt);	
-				  alert(result.status);
+				alert(result.status);
 			 }
 		});
 	
@@ -69,7 +69,26 @@ function initMap(mapHolder){
 	google.maps.event.addListener(map, "click", mapLeftClick);
 	mapHolder = null;
 	mapOptions = null;
-}; 
+	
+};
+
+google.maps.Map.prototype.clearOverlays = function() {
+	  if (markers) {
+	    for (var i = 0; i < markers.length; i++ ) {
+	      markers[i].setMap(null);
+	    }
+	  }
+  if (vmarkers) {
+		    for (var i = 0; i < vmarkers.length; i++ ) {
+		      vmarkers[i].setMap(null);
+		    }
+	  }
+	  polyLine.setMap(null);
+	  initPolyline();
+	  $('#markers-input').empty();
+	  $('#markers-input').listview('refresh');
+	  map=null;
+};
 
 var initPolyline = function() {
 	var polyOptions = {
@@ -122,7 +141,7 @@ function createInfoWindow(marker){
 	  	div.append(h3);
 	  	div.append(latshow);
 	  	div.append(lngshow);
-	  	
+	  	//add waypoint to list
 	    $('#markers-input').append(div);
 	    $('#markers-input').find('div[data-role=collapsible]').collapsible({theme:'c',refresh:true});
 	    infoWindow = null;
@@ -347,11 +366,6 @@ var removeVMarkers = function(index) {
 	}
 	index = null;
 };
-
-/*window.onload = function() {
-	initMap('map_Canvas');
-	initPolyline();
-}; */
 
 
 

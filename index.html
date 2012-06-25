@@ -26,6 +26,7 @@
 <script type="text/javascript" src="js/googlemap.js"></script>
 <script type="text/javascript" src="js/drive.js"></script>
 <script type="text/javascript" src="js/planner.js"></script>
+<script type="text/javascript" src="js/navigation.js"></script>
 </head>
 
 <body>
@@ -88,7 +89,8 @@
 				<ul>
 					<li><a href="#Drive">Drive</a></li>
 					<li><a href="#NavDisplay">Navigation Display</a></li>
-					<li><a href="#LightControl" class="ui-btn-active">Control Lights</a></li>
+					<li><a href="#LightControl" class="ui-btn-active">Control
+							Lights</a></li>
 					<li><a href="#planner">Path Planner</a></li>
 				</ul>
 			</div>
@@ -113,6 +115,14 @@
 			</div>
 
 			<div class="waypoints_section">
+				<div data-role="controlgroup" data-type="horizontal" data-mini="true" >
+					<a id="new_trip_button" data-role="button" data-icon="add">New Trip</a> 
+					<a id="pass_waypoints_button" data-role="button">Pass Waypoints</a> 
+					<a id="reverse_button" data-role="button">Reverse</a>
+					<a id="start_following_button" data-role="button">Start following</a> 
+					<a id="stop_following_button" data-role="button">Stop following</a>
+					
+				</div>
 				<h3>Waypoints</h3>
 				<div id="markers-input" data-role="collapsible-set"></div>
 			</div>
