@@ -2,267 +2,292 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>jQuery Mobile theDemonStrator Front-end</title>
-   	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<title>jQuery Mobile theDemonStrator Front-end</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- jQuery Mobile (Google CDN) -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.css" />
-	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.0rc1/jquery.mobile-1.0rc1.min.js"></script>
+
+<!-- Google APIs -->
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
+	djConfig="parseOnLoad: true"></script>
 
 
-	<!-- jQuery Mobile (local copy) -->
- <!--	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.0rc1.min.css" />
-	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile-1.0rc1.min.js"></script> -->
-	
-	<!-- Google APIs -->
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
- 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
-	
-<!--<script type="text/javascript" src="js/jquery.json-2.3.js"></script>-->
-<!--    <script type="text/javascript" src="bindows_gauges/bindows_gauges.js"></script> -->
-<!--    <script type="text/javascript" src="js/rudder.js"></script> -->	
-
-	<!-- Personal -->
-	<link rel="stylesheet" type="text/css" href="css/layout.css" /> 
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/googlemap.js"></script>
-    <script type="text/javascript" src="js/drive.js"></script>
-    <script type="text/javascript" src="js/planner.js"></script>
+<!-- Personal -->
+<link rel="stylesheet" type="text/css" href="css/layout.css" />
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/googlemap.js"></script>
+<script type="text/javascript" src="js/drive.js"></script>
+<script type="text/javascript" src="js/planner.js"></script>
 </head>
 
-<body> 
+<body>
 
-<!--First page -->
-<!--********** -->
-<div data-role="page" id="home" data-theme="b" data-fullscreen="true">
+	<!--First page -->
+	<!--********** -->
+	<div data-role="page" id="home" data-theme="b" data-fullscreen="true">
 
-    <div class="header" data-role="header" data-theme="a"  >
-        <h1>theDemonstrator Front-End</h1>
-    </div><!-- /header -->
+		<div class="header" data-role="header" data-theme="a">
+			<h1>theDemonstrator Front-End</h1>
+		</div>
+		<!-- /header -->
 
-	<div class="content" data-role ="content" >
-    	 	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a" >
-    	 		<li data-role="list-divider">Select</li>
-        		<li><a href="#Drive">Drive</a></li>
-        		<li><a href="#LightControl">Light Control</a></li>
-        		<li><a href="#NavDisplay">Navigation Display</a></li>
-        		<li><a href="#planner">Path Planner</a></li>
-    		</ul>        
-    </div><!-- /content -->
-
-    <div data-role="footer" class="footer" data-theme="a"  data-position="fixed" >
-        <h4>MARSSA</h4>
-    </div><!-- /footer -->
-</div><!-- /page -->
-
-<!-- LightControl -->
-<!--************* --> <!-- NOTE: Toggle switch not rendering properly -->
-
-<div data-role="page" id="LightControl" data-theme="b" data-fullscreen="true" >
-	<div data-role="header" data-theme="a">
-        <h1>Light Control</h1>
-        <a href="#home" data-icon="home" data-theme="c">Home</a>
-    </div><!-- /header -->
-		
-	<div data-role="content" class="content" >
-   	    <div data-role="fieldcontain">
-			<label for="slider">Navigation Lights:</label>
-			<select data-role="slider" name="slider" id="slider" >
-				<option value="off">Off</option>
-				<option value="on" selected="selected">On</option>
-			</select> 
-		</div>		
-	</div> <!-- Content -->
-	
-	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#Drive" >Drive</a></li>
-				<li><a href="#NavDisplay" >Navigation Display</a></li>
-				<li><a href="#LightControl" class="ui-btn-active">Control Lights</a></li>
+		<div class="content" data-role="content">
+			<ul data-role="listview" data-inset="true" data-theme="c"
+				data-dividertheme="a">
+				<li data-role="list-divider">Select</li>
+				<li><a href="#Drive">Drive</a></li>
+				<li><a href="#LightControl">Light Control</a></li>
+				<li><a href="#NavDisplay">Navigation Display</a></li>
 				<li><a href="#planner">Path Planner</a></li>
 			</ul>
 		</div>
+		<!-- /content -->
+
+		<div data-role="footer" class="footer" data-theme="a"
+			data-position="fixed">
+			<h4>MARSSA</h4>
+		</div>
+		<!-- /footer -->
 	</div>
-</div>
+	<!-- /page -->
 
-<!-- Navigation -->
-<!--*********** -->
+	<!-- LightControl -->
+	<!--************* -->
+	<!-- NOTE: Toggle switch not rendering properly -->
 
-<div data-role="page" id="NavDisplay" data-theme="b" data-fullscreen="true" >
-	<div data-role="header" data-theme="a">
-        <h1>Navigation Menu</h1>
-        <a href="#home" data-icon="home" data-theme="c">Home</a>
-    </div><!-- /header -->
-   
-    <div data-role ="content" id="content1">
+	<div data-role="page" id="LightControl" data-theme="b"
+		data-fullscreen="true">
+		<div data-role="header" data-theme="a">
+			<h1>Light Control</h1>
+			<a href="#home" data-icon="home" data-theme="c">Home</a>
+		</div>
+		<!-- /header -->
 
-		<div id="map_container">
-			<div id="map_canvas"></div>
+		<div data-role="content" class="content">
+			<div data-role="fieldcontain">
+				<label for="slider">Navigation Lights:</label> <select
+					data-role="slider" name="slider" id="slider">
+					<option value="off">Off</option>
+					<option value="on" selected="selected">On</option>
+				</select>
+			</div>
+		</div>
+		<!-- Content -->
+
+		<div data-role="footer" class="footer" data-theme="a"
+			data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#Drive">Drive</a></li>
+					<li><a href="#NavDisplay">Navigation Display</a></li>
+					<li><a href="#LightControl" class="ui-btn-active">Control Lights</a></li>
+					<li><a href="#planner">Path Planner</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Navigation -->
+	<!--*********** -->
+
+	<div data-role="page" id="NavDisplay" data-theme="b"
+		data-fullscreen="true">
+		<div data-role="header" data-theme="a">
+			<h1>Navigation Menu</h1>
+			<a href="#home" data-icon="home" data-theme="c">Home</a>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content" id="content1">
+
+			<div id="map_container">
+				<div id="map_canvas"></div>
+			</div>
+
+			<div class="waypoints_section">
+				<h3>Waypoints</h3>
+				<div id="markers-input" data-role="collapsible-set"></div>
+			</div>
 		</div>
 
-	 	<div id="markers-input" data-role="collapsible-set">
-			
-		</div> 
-
-	</div>	
-
-	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#Drive" >Drive</a></li>
-				<li><a href="#NavDisplay" class="ui-btn-active">Navigation Display</a></li>
-				<li><a href="#LightControl">Control Lights</a></li>
-				<li><a href="#planner">Path Planner</a></li>
-			</ul>
+		<div data-role="footer" class="footer" data-theme="a"
+			data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#Drive">Drive</a></li>
+					<li><a href="#NavDisplay" class="ui-btn-active">Navigation
+							Display</a></li>
+					<li><a href="#LightControl">Control Lights</a></li>
+					<li><a href="#planner">Path Planner</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
 
-<!-- Waypoints -->
-<!-- ********* -->
+	<!-- Waypoints -->
+	<!-- ********* -->
 
-<div data-role="page" id="Waypoints" data-theme="b" data-fullscreen="true" >
-	<div data-role="header" data-theme="a">
-        <h1>Navigation Menu - Waypoints</h1>
-        <a href="#NavDisplay" data-icon="back" data-theme="c">Back</a>
-    </div><!-- /header -->
-   
-    <div data-role ="content">
-  		<div id="waypoints-list-container">		<!-- to be filled dynamically -->	
-				<ul id="waypoints-list" data-role="listview" data-theme="c" data-dividertheme="d">
+	<div data-role="page" id="Waypoints" data-theme="b"
+		data-fullscreen="true">
+		<div data-role="header" data-theme="a">
+			<h1>Navigation Menu - Waypoints</h1>
+			<a href="#NavDisplay" data-icon="back" data-theme="c">Back</a>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			<div id="waypoints-list-container">
+				<!-- to be filled dynamically -->
+				<ul id="waypoints-list" data-role="listview" data-theme="c"
+					data-dividertheme="d">
 					<li data-role="list-divider">Form elements</li>
 				</ul>
-		</div>
-	</div>	
-
-	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#Drive" >Drive</a></li>
-				<li><a href="#NavDisplay" class="ui-btn-active">Navigation Display</a></li>
-				<li><a href="#LightControl">Control Lights</a></li>
-				<li><a href="#planner">Path Planner</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
-
-<!-- Drive -->
-<!-- ***** -->
-
-<div data-role="page" id="Drive" data-theme="b"  data-fullscreen="true">
-
- 	<div data-role="header" data-theme="a"  >
-		<h1>Drive</h1>
-		<a href="#home" data-icon="home" data-theme="c">Home</a>
-	</div>
-
- 	<div class="content" data-role="content" >
-	
-		<div>
-			<input id="percent-thrust" type="text" value="" style="width:50px"/>
-			<input id="rudder-angle" type="text" value="" style="width:50px"/>
-		</div>	
-		
-		<div class="drive-content">
-	
-     		<div class="drive-control">
-				<div class="buttons-container">
-					
-					<div id="full-ahead"  >
-					<!-- <img id="full-throttle-hl" class="extreme-buttons" src="img/full-throttle-hl.png" /> -->
-					 	<img id="full-throttle" class="extreme-buttons" src="img/full-throttle.png" />
-					</div>
-					
-					<div id="upper-button">
-	
-						<div class="drive-button" id="move-forward"  >
-							<img id="forward-button-hl" class="img-arrow" src="img/forward-hl.png" />
-						 	<img id="forward-button" class="img-arrow" src="img/forward.png" />
-						 	
-						</div>
-					
-					</div>		
-				
-					<div class="lower-buttons">
-						<div class="drive-button" id="turn-portside"  >
-							<img id="ps-button-hl" class="img-arrow" src="img/left-hl.png" />
-						 	<img id="ps-button" class="img-arrow" src="img/left.png" />
-						</div>
-						
-						<div class="drive-button" id="move-backward" >
-							<img id="down-button-hl" class="img-arrow" src="img/down-hl.png" />
-						 	<img id="down-button" class="img-arrow" src="img/down.png" />
-						</div>
-					
-						<div class="drive-button" id="turn-starboard" >
-					 		<img id="sb-button-hl" class="img-arrow" src="img/right-hl.png" />
-					 		<img id="sb-button" class="img-arrow" src="img/right.png" />
-						</div>
-					</div>
-					
-					<div id="full-astern" >
-					<!--<img id="full-astern-button-hl" class="extreme-buttons" src="img/full-astern-hl.png" /> -->
-					 	<img id="full-astern-button" class="extreme-buttons" src="img/full-astern.png" />
-					</div>
-					
-					<div  id="stop" >
-						<img id="stop-button-hl" class="large-buttons" src="img/stop-hl.png" />
-					 	<img id="stop-button" class="large-buttons" src="img/stop.png" />
-					</div>
-					
-					
-				</div>
 			</div>
 		</div>
-	</div>
-	<div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#Drive" class="ui-btn-active" >Drive</a></li>
-				<li><a href="#NavDisplay">Navigation Display</a></li>
-				<li><a href="#LightControl">Control Lights</a></li>
-				<li><a href="#planner">Path Planner</a></li>
-			</ul>
-		</div>
-	</div>
-</div>
 
-<!--Planner -->
-<!--********** -->
-<div data-role="page" id="planner" data-theme="b" data-fullscreen="true">
-
-    <div class="header" data-role="header" data-theme="a"  >
-        <h1>Path Planner</h1>
-    </div><!-- /header -->
-
-	<div class="content" data-role="content" >
-		<div class="drive-content">
-	   		<div class="drive-control">
-				<div class="buttons-container">
-					<div class="drive-button" id="start-planner">
-				 		<img class="large-buttons" src="img/right.png" />
-					</div>
-				</div>
+		<div data-role="footer" class="footer" data-theme="a"
+			data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#Drive">Drive</a></li>
+					<li><a href="#NavDisplay" class="ui-btn-active">Navigation
+							Display</a></li>
+					<li><a href="#LightControl">Control Lights</a></li>
+					<li><a href="#planner">Path Planner</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
 
-    <div data-role="footer" class="footer" data-theme="a"  data-position="fixed">
-		<div data-role="navbar">
-			<ul>
-				<li><a href="#Drive">Drive</a></li>
-				<li><a href="#NavDisplay">Navigation Display</a></li>
-				<li><a href="#LightControl">Control Lights</a></li>
-				<li><a href="#planner" class="ui-btn-active">Path Planner</a></li>
-			</ul>
+	<!-- Drive -->
+	<!-- ***** -->
+
+	<div data-role="page" id="Drive" data-theme="b" data-fullscreen="true">
+
+		<div data-role="header" data-theme="a">
+			<h1>Drive</h1>
+			<a href="#home" data-icon="home" data-theme="c">Home</a>
+		</div>
+
+		<div class="content" data-role="content">
+
+			<div>
+				<input id="percent-thrust" type="text" value="" style="width: 50px" />
+				<input id="rudder-angle" type="text" value="" style="width: 50px" />
+			</div>
+
+			<div class="drive-content">
+
+				<div class="drive-control">
+					<div class="buttons-container">
+
+						<div id="full-ahead">
+							<!-- <img id="full-throttle-hl" class="extreme-buttons" src="img/full-throttle-hl.png" /> -->
+							<img id="full-throttle" class="extreme-buttons"
+								src="img/full-throttle.png" />
+						</div>
+
+						<div id="upper-button">
+
+							<div class="drive-button" id="move-forward">
+								<img id="forward-button-hl" class="img-arrow"
+									src="img/forward-hl.png" /> <img id="forward-button"
+									class="img-arrow" src="img/forward.png" />
+
+							</div>
+
+						</div>
+
+						<div class="lower-buttons">
+							<div class="drive-button" id="turn-portside">
+								<img id="ps-button-hl" class="img-arrow" src="img/left-hl.png" />
+								<img id="ps-button" class="img-arrow" src="img/left.png" />
+							</div>
+
+							<div class="drive-button" id="move-backward">
+								<img id="down-button-hl" class="img-arrow" src="img/down-hl.png" />
+								<img id="down-button" class="img-arrow" src="img/down.png" />
+							</div>
+
+							<div class="drive-button" id="turn-starboard">
+								<img id="sb-button-hl" class="img-arrow" src="img/right-hl.png" />
+								<img id="sb-button" class="img-arrow" src="img/right.png" />
+							</div>
+						</div>
+
+						<div id="full-astern">
+							<!--<img id="full-astern-button-hl" class="extreme-buttons" src="img/full-astern-hl.png" /> -->
+							<img id="full-astern-button" class="extreme-buttons"
+								src="img/full-astern.png" />
+						</div>
+
+						<div id="stop">
+							<img id="stop-button-hl" class="large-buttons"
+								src="img/stop-hl.png" /> <img id="stop-button"
+								class="large-buttons" src="img/stop.png" />
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" class="footer" data-theme="a"
+			data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#Drive" class="ui-btn-active">Drive</a></li>
+					<li><a href="#NavDisplay">Navigation Display</a></li>
+					<li><a href="#LightControl">Control Lights</a></li>
+					<li><a href="#planner">Path Planner</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div><!-- /page -->
+
+	<!--Planner -->
+	<!--********** -->
+	<div data-role="page" id="planner" data-theme="b"
+		data-fullscreen="true">
+
+		<div class="header" data-role="header" data-theme="a">
+			<h1>Path Planner</h1>
+		</div>
+		<!-- /header -->
+
+		<div class="content" data-role="content">
+			<div class="drive-content">
+				<div class="drive-control">
+					<div class="buttons-container">
+						<div class="drive-button" id="start-planner">
+							<img class="large-buttons" src="img/right.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-role="footer" class="footer" data-theme="a"
+			data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#Drive">Drive</a></li>
+					<li><a href="#NavDisplay">Navigation Display</a></li>
+					<li><a href="#LightControl">Control Lights</a></li>
+					<li><a href="#planner" class="ui-btn-active">Path Planner</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /page -->
 
 </body>
 </html>
