@@ -1,12 +1,9 @@
 $('#NavDisplay').live('pageshow', function() {
 
-	function Waypoints(){
-		
-		
-		
-		
+	function Waypoints() {
+
 	}
-	
+
 	$("#new_trip_button").live('vmousedown', function(event) {
 		map.clearOverlays();
 
@@ -65,10 +62,16 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "pathPlanner/waypoints",
-			data : waypoints,
-			dataType : "json",
-			traditional: true
+			url : "http://localhost:8182/pathPlanner/waypoints",
+			data : waypointsArray,
+			success : function() {
+				alert("Succesful");
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(errorThrown);
+			},
+			dataType : "json"
+			//traditional : true
 		});
 
 	});

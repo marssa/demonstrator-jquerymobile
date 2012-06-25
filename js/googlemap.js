@@ -12,6 +12,9 @@ var contentString = '<div data-role="fieldcontain" id="marker-form" style=" widt
 						'<input type="submit" value="Add" id="submit-button" />'+
 					'</div>';
 
+var waypointsArray = [];
+var id = 0;
+
 $('#NavDisplay').live('pageshow', function() {
 	
 	
@@ -115,13 +118,18 @@ function createInfoWindow(marker){
 		 
 	$('#submit-button').live("click", function() {
 		var markerName = $('#textbox').val();
+		lat = marker.getPosition().lat();
+		lng = marker.getPosition().lng();
+		
+		waypointsArray.push({waypointID: id++, waypointName: markerName, waypointLat: lat, waypointLon: lng});
+				
 		h3 = '<h3>' + markerName + '</h3>';
 		//split into Degrees, Minutes, Seconds
-		lat = marker.getPosition().lat();
+		
 		latdeg = Math.floor(lat);
 		latmin = Math.floor((lat % 1)* 60 );
 		latsec = Math.round( ( (((lat % 1) * 60) % 1) * 60) * 100) / 100;
-		lng = marker.getPosition().lng();
+		
 		lngdeg = Math.floor(lng);
 		lngmin = Math.floor((lat % 1)* 60 );
 		lngsec = Math.floor( ( (((lng % 1) * 60) % 1) * 60) * 100) / 100;
@@ -149,6 +157,8 @@ function createInfoWindow(marker){
 	
 
 }
+
+
 
 var mapLeftClick = function(event) {
 	
