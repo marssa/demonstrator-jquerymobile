@@ -1,8 +1,5 @@
 $('#NavDisplay').live('pageshow', function() {
 
-	function Waypoints() {
-
-	}
 
 	$("#new_trip_button").live('vmousedown', function(event) {
 		map.clearOverlays();
@@ -14,21 +11,33 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "pathPlanner/reverseRoute",
+			url : "http://localhost:8182/pathPlanner/reverseRoute",
 			data : "{}",
-			dataType : "json"
+			dataType : "json",
+			success : function() {
+				alert("Reversing Route!");
+			},
+			error : function() {
+				alert("Reverse Route not working!");
+			}
 		});
 
 	});
 
-	$('#start_trip_button').click(function() {
+	$('#start_following_button').click(function() {
 
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "pathPlanner/startFollowing",
+			url : "http://localhost:8182/pathPlanner/startFollowing",
 			data : "{}",
-			dataType : "json"
+			dataType : "json",
+			success : function() {
+				alert("Started Following!");
+			},
+			error : function() {
+				alert("Start Following - not working!");
+			}
 		});
 
 	});
@@ -38,9 +47,15 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "pathPlanner/stopFollowing",
+			url : "http://localhost:8182/pathPlanner/stopFollowing",
 			data : "{}",
-			dataType : "json"
+			dataType : "json",
+			success : function() {
+				alert("Stopped Following!");
+			},
+			error : function() {
+				alert("Stop Following - not working!");
+			}
 		});
 
 	});
@@ -49,10 +64,16 @@ $('#NavDisplay').live('pageshow', function() {
 
 		$.ajax({
 			type : "POST",
-			contentType : "application/json; charset=utf-8",
-			url : "pathPlanner/comeHome",
+			contentType : "/application/json; charset=utf-8",
+			url : "http://localhost:8182/pathPlanner/comeHome",
 			data : "{}",
-			dataType : "json"
+			dataType : "json",
+			success : function() {
+				alert("Coming Home!");
+			},
+			error : function() {
+				alert("Coming Home - not working!");
+			}
 		});
 
 	});
@@ -65,13 +86,12 @@ $('#NavDisplay').live('pageshow', function() {
 			url : "http://localhost:8182/pathPlanner/waypoints",
 			data : waypointsArray,
 			success : function() {
-				alert("Succesful");
+				alert("Waypoints sent successfully!");
 			},
-			error : function(XMLHttpRequest, textStatus, errorThrown) {
-				alert(errorThrown);
+			error : function() {
+				alert("Waypoints list not sent!");
 			},
 			dataType : "json"
-			//traditional : true
 		});
 
 	});
