@@ -2,16 +2,17 @@ var coordinatesInterrupt;
 var polyLine;
 var tmpPolyLine;
 var markers = [];
+var waypoints = [];
 var vmarkers = [];
 var map = null;
-var infoWindow = null;
+//var infoWindow = null;
 var boatMarker;
 var contentString = '<div data-role="fieldcontain" id="marker-form" style=" width: 200px; height: 75px"> '
 		+ '<label for="name">Enter  Waypoint Name:</label><br/><br/>'
 		+ '<input type="text" id="textbox" name="wp-name" value=""  />'
 		+ '</div>';
 
-var waypointsArray = [];
+//var waypointsArray = [];
 var id = 0;
 
 $('#NavDisplay').live('pageshow', function() {
@@ -23,6 +24,11 @@ $('#NavDisplay').live('pageshow', function() {
 	});
 	coordinatesInterrupt = setInterval("trackPosition()", 3000);
 	initPolyline();
+	
+	//disabling control buttons
+	$('#reverse_button').addClass('ui-disabled');
+	$('#start_following_button').addClass('ui-disabled');
+	$('#stop_following_button').addClass('ui-disabled');
 
 });
 
@@ -43,7 +49,7 @@ function trackPosition() {
 	 * clearInterval(coordinatesInterrupt); alert(result.status); } });
 	 * 
 	 */
-}
+};
 
 function initMap(mapHolder) {
 	markers = [];
@@ -99,74 +105,30 @@ var initPolyline = function() {
 	tmpPolyLine.setMap(map);
 };
 
-function createInfoWindow(marker) {
+
+/*function createInfoWindow(marker) {
 
 	infoWindow = new google.maps.InfoWindow();
 	infoWindow.setContent(contentString);
 	infoWindow.open(map, marker);
 
-	$('#submit-button').on(
-			"click",
-			function() {
-				var markerName = $('#textbox').val();
-				lat = marker.getPosition().lat();
-				lng = marker.getPosition().lng();
-
-				waypointsArray.push({
-					waypointID : id++,
-					waypointName : markerName,
-					waypointLat : lat,
-					waypointLon : lng
-				});
-
-				h3 = '<h3>' + markerName + '</h3>';
-				// split into Degrees, Minutes, Seconds
-
-				latdeg = Math.floor(lat);
-				latmin = Math.floor((lat % 1) * 60);
-				latsec = Math.round(((((lat % 1) * 60) % 1) * 60) * 100) / 100;
-
-				lngdeg = Math.floor(lng);
-				lngmin = Math.floor((lat % 1) * 60);
-				lngsec = Math.floor(((((lng % 1) * 60) % 1) * 60) * 100) / 100;
-
-				latshow = "<p>Latitude: " + latdeg + "\u00B0 " + latmin + "\' "
-						+ latsec + "\" </p>";
-				lngshow = "<p>Longitude: " + lngdeg + "\u00B0 " + lngmin
-						+ "\' " + lngsec + "\"</p>";
-
-				infoWindow.close();
-				marker.setTitle(markerName + ", Lat:" + latdeg + "\u00B0 "
-						+ latmin + "\' " + latsec + "\"" + ", Lng:" + lngdeg
-						+ "\u00B0 " + lngmin + "\' " + lngsec + "\"");
-
-				// build & add collapsible item
-				div = $('<div/>');
-				div.attr('data-role', 'collapsible');
-				div.attr('data-theme', 'e');
-				div.attr('data-content-theme', 'e');
-				div.append(h3);
-				div.append(latshow);
-				div.append(lngshow);
-				// add waypoint to list
-				$('#markers-input').append(div);
-				$('#markers-input').find('div[data-role=collapsible]')
-						.collapsible({
-							theme : 'c',
-							refresh : true
-						});
-
-				infoWindow = null;
-				$('#submit-button').off("click");
-
-			});
-};
+};*/
 var mapLeftClick = function(event) {
 
-	if (infoWindow == null) {
+//	if (infoWindow == null) {
 		if (event.latLng) {
 			var marker = createMarker(event.latLng);
+			markerName = 'default';
 			markers.push(marker);
+			lat = marker.getPosition().lat();
+			lng = marker.getPosition().lng();
+			waypoints.push({
+				waypointID : id++,
+				waypointName : markerName,
+				waypointLat : lat,
+				waypointLon : lng		
+			});
+								
 			if (markers.length != 1) {
 				var vmarker = createVMarker(event.latLng);
 				vmarkers.push(vmarker);
@@ -174,15 +136,16 @@ var mapLeftClick = function(event) {
 			}
 			var path = polyLine.getPath();
 			path.push(event.latLng);
-			createInfoWindow(marker);
+			//createInfoWindow(marker);
 
 			marker = null;
 		}
-	}
+//	}
 	event = null;
 };
 
 var createMarker = function(point) {
+	
 	var imageNormal = new google.maps.MarkerImage("img/boat-icon-normal.png",
 			new google.maps.Size(11, 11), new google.maps.Point(0, 0),
 			new google.maps.Point(6, 6));
@@ -195,12 +158,15 @@ var createMarker = function(point) {
 		icon : imageNormal,
 		draggable : true
 	});
+	
 	google.maps.event.addListener(marker, "mouseover", function() {
 		marker.setIcon(imageHover);
 	});
+	
 	google.maps.event.addListener(marker, "mouseout", function() {
 		marker.setIcon(imageNormal);
 	});
+	
 	google.maps.event.addListener(marker, "drag", function() {
 		for ( var m = 0; m < markers.length; m++) {
 			if (markers[m] == marker) {
@@ -211,7 +177,8 @@ var createMarker = function(point) {
 		}
 		m = null;
 	});
-
+	
+	//removing marker on double click
 	google.maps.event.addListener(marker, "dblclick", function() {
 		for ( var m = 0; m < markers.length; m++) {
 			if (markers[m] == marker) {
@@ -228,10 +195,10 @@ var createMarker = function(point) {
 };
 
 var createVMarker = function(point) {
-	if (infoWindow != null) {
+	/*if (infoWindow != null) {
 		infoWindow.close();
 		infoWindow = null;
-	}
+	}*/
 
 	var prevpoint = markers[markers.length - 2].getPosition();
 	var imageNormal = new google.maps.MarkerImage("img/x.png",
@@ -300,7 +267,7 @@ var createVMarker = function(point) {
 				tmpPolyLine.getPath().removeAt(2);
 				tmpPolyLine.getPath().removeAt(1);
 				tmpPolyLine.getPath().removeAt(0);
-				createInfoWindow(newMarker);
+			//	createInfoWindow(newMarker);
 				newpos = null;
 				startMarkerPos = null;
 				firstVPos = null;

@@ -115,18 +115,22 @@
 			</div>
 
 			<div class="waypoints_section">
+				
+				<div data-role="controlgroup" data-type="horizontal" data-inline="true" >
+					<a id="new_trip_button" data-role="button" data-icon="back" >Clear Map</a> 
+					<a id="pass_waypoints_button" data-role="button" data-icon="check" data-inline="true">Pass Waypoints</a>
+				
+				</div>
+				
+				<div id="markers-input" data-role="collapsible-set"></div>
+				<div data-role="controlgroup" data-type="horizontal" data-inline="true" >
+					
 			
-				<div data-role="controlgroup" data-type="horizontal" data-mini="true" >
-					<input type="submit" value="Add WP" id="submit-button" data-icon="add" />
-					<a id="new_trip_button" data-role="button" >New Trip</a> 
-					<a id="pass_waypoints_button" data-role="button">Pass Waypoints</a> 
-					<a id="reverse_button" data-role="button">Reverse</a>
 					<a id="start_following_button" data-role="button">Start following</a> 
 					<a id="stop_following_button" data-role="button">Stop following</a>
+							<a id="reverse_button" data-role="button">Reverse</a>
 					
 				</div>
-				<h3>Waypoints</h3>
-				<div id="markers-input" data-role="collapsible-set"></div>
 			</div>
 		</div>
 
