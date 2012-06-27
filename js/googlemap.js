@@ -118,15 +118,15 @@ var mapLeftClick = function(event) {
 //	if (infoWindow == null) {
 		if (event.latLng) {
 			var marker = createMarker(event.latLng);
-			markerName = 'default';
+			markerName = 'Waypoint #' + id++;
 			markers.push(marker);
 			lat = marker.getPosition().lat();
 			lng = marker.getPosition().lng();
 			waypoints.push({
-				waypointID : id++,
-				waypointName : markerName,
-				waypointLat : lat,
-				waypointLon : lng		
+				id : id,
+				name : markerName,
+				lat : lat,
+				lng : lng		
 			});
 								
 			if (markers.length != 1) {

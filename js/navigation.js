@@ -11,7 +11,7 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "http://localhost:8182/pathPlanner/reverseRoute",
+			url : "pathPlanner/reverseRoute",
 			data : "{}",
 			dataType : "json",
 			success : function() {
@@ -29,7 +29,7 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "http://localhost:8182/pathPlanner/startFollowing",
+			url : "pathPlanner/startFollowing",
 			data : "{}",
 			dataType : "json",
 			success : function() {
@@ -47,7 +47,7 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "http://localhost:8182/pathPlanner/stopFollowing",
+			url : "pathPlanner/stopFollowing",
 			data : "{}",
 			dataType : "json",
 			success : function() {
@@ -65,7 +65,7 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "/application/json; charset=utf-8",
-			url : "http://localhost:8182/pathPlanner/comeHome",
+			url : "pathPlanner/comeHome",
 			data : "{}",
 			dataType : "json",
 			success : function() {
@@ -85,7 +85,7 @@ $('#NavDisplay').live('pageshow', function() {
 		$.ajax({
 			type : "POST",
 			contentType : "application/json; charset=utf-8",
-			url : "http://localhost:8182/pathPlanner/waypoints",
+			url : "pathPlanner/waypoints",
 			data :'{"waypoints" :' + JSON.stringify(waypoints) + '}',
 			dataType : "json",
 			success : function() {
@@ -97,7 +97,7 @@ $('#NavDisplay').live('pageshow', function() {
 			},
 			error : function() {
 				
-				alert('Waypoints not send, JSON String sent: \n \n' + '{"waypoints" :' + JSON.stringify(waypoints) + '}');
+				alert('Waypoints not sent, JSON String sent: \n \n' + '{"waypoints" :' + JSON.stringify(waypoints) + '}');
 			}
 		
 		});
