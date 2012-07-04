@@ -2,30 +2,32 @@ var coordinatesInterrupt;
 var polyLine;
 var tmpPolyLine;
 var markers = [];
-var waypoints = [];
 var vmarkers = [];
+var arrayPath =[];
 var map = null;
-//var infoWindow = null;
 var boatMarker;
 var contentString = '<div data-role="fieldcontain" id="marker-form" style=" width: 200px; height: 75px"> '
 		+ '<label for="name">Enter  Waypoint Name:</label><br/><br/>'
 		+ '<input type="text" id="textbox" name="wp-name" value=""  />'
 		+ '</div>';
 
-//var waypointsArray = [];
 var id = 0;
+var waypoints = {waypoints: []};
 
 $('#NavDisplay').live('pageshow', function() {
 
 	initMap('map_canvas');
+	
+
 
 	boatMarker = new google.maps.Marker({
 		map : map,
 	});
-	coordinatesInterrupt = setInterval("trackPosition()", 3000);
+//	trackPosition();
+//	coordinatesInterrupt = setInterval("trackPosition()", 10000);
 	initPolyline();
-	
-	//disabling control buttons
+
+	// disabling control buttons
 	$('#reverse_button').addClass('ui-disabled');
 	$('#start_following_button').addClass('ui-disabled');
 	$('#stop_following_button').addClass('ui-disabled');
@@ -39,23 +41,31 @@ $('#NavDisplay').live('pagehide', function() {
 
 function trackPosition() {
 
-	/*
-	 * $.ajax({ url: "gps/coordinates", dataType: "json", data: {}, async:
-	 * false, success: function(coordinate){ lat =
-	 * coordinate['latitude']['DMS']['value']; lng =
-	 * coordinate['longitude']['DMS']['value']; map.setCenter(new
-	 * google.maps.LatLng(lat, lng)); boatMarker.setPosition(new
-	 * google.maps.LatLng(lat, lng)); }, error: function(result){
-	 * clearInterval(coordinatesInterrupt); alert(result.status); } });
-	 * 
-	 */
+	$.ajax({
+		url : "gps/coordinates",
+		dataType : "json",
+		data : {},
+		async : false,
+		success : function(coordinate) {
+			lt = 35.889446; 
+			lg = 14.518411;
+			map.setCenter(new google.maps.LatLng(lt, lg));
+	//		boatMarker.setPosition(new google.maps.LatLng(lt, lg));
+		
+		},
+		error : function(result) {
+			clearInterval(coordinatesInterrupt);
+			alert(result.status);
+		}
+	});
+
 };
 
 function initMap(mapHolder) {
 	markers = [];
 	vmarkers = [];
 	var mapOptions = {
-		zoom : 18,
+		zoom : 25,
 		center : new google.maps.LatLng(35.88923, 14.51721),
 		mapTypeId : google.maps.MapTypeId.HYBRID,
 		draggableCursor : 'auto',
@@ -69,24 +79,16 @@ function initMap(mapHolder) {
 	mapOptions = null;
 
 };
+$('#NavDisplay').live('pageshow', function() {
 
-google.maps.Map.prototype.clearOverlays = function() {
-	if (markers) {
-		for ( var i = 0; i < markers.length; i++) {
-			markers[i].setMap(null);
-		}
-	}
-	if (vmarkers) {
-		for ( var i = 0; i < vmarkers.length; i++) {
-			vmarkers[i].setMap(null);
-		}
-	}
-	polyLine.setMap(null);
+$("#new_trip_button").live('vmousedown', function() {
+	initMap('map_canvas');
 	initPolyline();
-	$('#markers-input').empty();
-	$('#markers-input').listview('refresh');
-	map = null;
-};
+	waypoints = {waypoints: []};
+	markers = [];
+
+});
+});
 
 var initPolyline = function() {
 	var polyOptions = {
@@ -106,41 +108,31 @@ var initPolyline = function() {
 };
 
 
-/*function createInfoWindow(marker) {
-
-	infoWindow = new google.maps.InfoWindow();
-	infoWindow.setContent(contentString);
-	infoWindow.open(map, marker);
-
-};*/
 var mapLeftClick = function(event) {
 
-//	if (infoWindow == null) {
-		if (event.latLng) {
-			var marker = createMarker(event.latLng);
-			markerName = 'Waypoint #' + id++;
-			markers.push(marker);
-			lat = marker.getPosition().lat();
-			lng = marker.getPosition().lng();
-			waypoints.push({
-				id : id,
-				name : markerName,
-				lat : lat,
-				lng : lng		
-			});
-								
-			if (markers.length != 1) {
-				var vmarker = createVMarker(event.latLng);
-				vmarkers.push(vmarker);
-				vmarker = null;
-			}
-			var path = polyLine.getPath();
-			path.push(event.latLng);
-			//createInfoWindow(marker);
-
-			marker = null;
+	var path = polyLine.getPath();
+	if (event.latLng) {
+	//Code used when tracking position is on
+		/*	if (markers.length ==0){
+			var firstMarker = createMarker(boatMarker.getPosition());
+			markerName= 'Boat Start Position';
+			markers.push(firstMarker);
+			
+			path.push(boatMarker.getPosition());
+		}*/
+		var marker = createMarker(event.latLng);
+		markers.push(marker);
+				
+		if (markers.length != 1) {
+			var vmarker = createVMarker(event.latLng);
+			vmarkers.push(vmarker);
+			vmarker = null;
 		}
-//	}
+			
+		path.push(event.latLng);
+		readPolyLine();
+		marker = null;
+	}
 	event = null;
 };
 
@@ -158,15 +150,15 @@ var createMarker = function(point) {
 		icon : imageNormal,
 		draggable : true
 	});
-	
+
 	google.maps.event.addListener(marker, "mouseover", function() {
 		marker.setIcon(imageHover);
 	});
-	
+
 	google.maps.event.addListener(marker, "mouseout", function() {
 		marker.setIcon(imageNormal);
 	});
-	
+
 	google.maps.event.addListener(marker, "drag", function() {
 		for ( var m = 0; m < markers.length; m++) {
 			if (markers[m] == marker) {
@@ -177,8 +169,8 @@ var createMarker = function(point) {
 		}
 		m = null;
 	});
-	
-	//removing marker on double click
+
+	// removing marker on double click
 	google.maps.event.addListener(marker, "dblclick", function() {
 		for ( var m = 0; m < markers.length; m++) {
 			if (markers[m] == marker) {
@@ -195,11 +187,6 @@ var createMarker = function(point) {
 };
 
 var createVMarker = function(point) {
-	/*if (infoWindow != null) {
-		infoWindow.close();
-		infoWindow = null;
-	}*/
-
 	var prevpoint = markers[markers.length - 2].getPosition();
 	var imageNormal = new google.maps.MarkerImage("img/x.png",
 			new google.maps.Size(11, 11), new google.maps.Point(0, 0),
@@ -237,6 +224,7 @@ var createVMarker = function(point) {
 		for ( var m = 0; m < vmarkers.length; m++) {
 			if (vmarkers[m] == marker) {
 				tmpPolyLine.getPath().setAt(1, marker.getPosition());
+				readPolyLine();
 				break;
 			}
 		}
@@ -267,7 +255,7 @@ var createVMarker = function(point) {
 				tmpPolyLine.getPath().removeAt(2);
 				tmpPolyLine.getPath().removeAt(1);
 				tmpPolyLine.getPath().removeAt(0);
-			//	createInfoWindow(newMarker);
+				readPolyLine();
 				newpos = null;
 				startMarkerPos = null;
 				firstVPos = null;
@@ -282,6 +270,20 @@ var createVMarker = function(point) {
 	});
 
 	return marker;
+};
+
+function readPolyLine(){
+	arrayPath = polyLine.getPath();
+	waypoints = {waypoints: []};
+	id = 0;
+	for (var i=0; i< arrayPath.length;i++){
+		
+		markerName = 'Waypoint #' + id++;
+		waypoint = {name : markerName, id: id, lat : arrayPath.getAt(i).lat(), lng : arrayPath.getAt(i).lng() }
+		waypoints.waypoints.push(waypoint);
+	}
+	
+	
 };
 
 var moveVMarker = function(index) {

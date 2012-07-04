@@ -7,18 +7,18 @@
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<!--<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>-->
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script
 	src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
-
 <!-- Google APIs -->
-<script type="text/javascript"
-	src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js"
-	djConfig="parseOnLoad: true"></script>
 
+
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBWZgnwIN_sHi3syeWYmf-PM2OwinAZuhs&sensor=false">
+	
+</script>
 
 <!-- Personal -->
 <link rel="stylesheet" type="text/css" href="css/layout.css" />
@@ -27,6 +27,7 @@
 <script type="text/javascript" src="js/drive.js"></script>
 <script type="text/javascript" src="js/planner.js"></script>
 <script type="text/javascript" src="js/navigation.js"></script>
+
 </head>
 
 <body>
@@ -115,21 +116,24 @@
 			</div>
 
 			<div class="waypoints_section">
-				
-				<div data-role="controlgroup" data-type="horizontal" data-inline="true" >
-					<a id="new_trip_button" data-role="button" data-icon="back" >Clear Map</a> 
-					<a id="pass_waypoints_button" data-role="button" data-icon="check" data-inline="true">Pass Waypoints</a>
-				
+
+				<div data-role="controlgroup" data-type="horizontal"
+					data-inline="true">
+					<a id="new_trip_button" data-role="button" data-icon="back">Clear
+						Map</a> <a id="pass_waypoints_button" data-role="button"
+						data-icon="check" data-inline="true">Pass Waypoints</a>
+
 				</div>
-				
+
 				<div id="markers-input" data-role="collapsible-set"></div>
-				<div data-role="controlgroup" data-type="horizontal" data-inline="true" >
-					
-			
-					<a id="start_following_button" data-role="button">Start following</a> 
-					<a id="stop_following_button" data-role="button">Stop following</a>
-							<a id="reverse_button" data-role="button">Reverse</a>
-					
+				<div data-role="controlgroup" data-type="horizontal"
+					data-inline="true">
+
+
+					<a id="start_following_button" data-role="button">Start
+						following</a> <a id="stop_following_button" data-role="button">Stop
+						following</a> <a id="reverse_button" data-role="button">Reverse</a>
+
 				</div>
 			</div>
 		</div>
