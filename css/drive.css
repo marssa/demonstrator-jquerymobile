@@ -1,0 +1,82 @@
+@CHARSET "ISO-8859-1";
+
+
+#full-astern{
+	display: block;
+	text-align:center;
+}
+#stop-button-hl{
+	display:none;
+}
+#full-astern-button-hl{
+	display: none;
+}
+#ps-button-hl{
+	display:none;
+}
+
+#sb-button-hl{
+	display:none;
+}
+
+#forward-button-hl{
+	display:none;
+}
+#down-button-hl{
+	display:none;
+}
+
+#full-throttle-hl{
+	display:none;
+}
+
+.lower-buttons{	
+	margin-top: 10px;
+}
+
+#upper-button{
+	margin-top: 10px;
+}
+
+.drive-content{
+	display:inline;
+	width: 100px;
+}
+
+
+.large-buttons{
+	height: 90px;
+	width:90px;
+}
+
+
+#stop{
+	display: inline-block;
+	margin-top: 30px
+}
+
+#full-throttle{
+		
+}
+.extreme-buttons{
+	
+	height: 60px;
+	width: 60px;
+}
+
+.drive-button{
+	display:inline-block;
+	/*height:auto;*/
+	padding:10px;
+	/*border-radius:15px;
+	background-color:#353538;*/
+	/*margin:10px;*/
+}
+ 
+.img-arrow{
+	height: 70px;
+	width: 70px;
+}
+
+
+

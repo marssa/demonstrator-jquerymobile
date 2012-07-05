@@ -31,185 +31,199 @@ function initMap(mapHolder) {
 
 };
 
-$('#NavDisplay').live(
-		'pageshow',
-		function() {
+$('#NavDisplay').live('pageshow', function() {
+
+	var coordinatesInterrupt;
+	initMap('map_canvas');
+
+	boatMarker = new google.maps.Marker({
+		map : mapObjects.map,
+	});
+	// trackPosition();
+	// coordinatesInterrupt = setInterval("trackPosition()", 10000);
+	initPolyline();
+
+	// disabling control buttons
+	$('#reverse_button').addClass('ui-disabled');
+	$('#start_following_button').addClass('ui-disabled');
+	$('#stop_following_button').addClass('ui-disabled');
+
+	$('#NavDisplay').live('pagehide', function() {
+		clearInterval(coordinatesInterrupt);
+		coordinatesInterrupt = null;
+	});
+
+	$("#new_trip_button").live('vmousedown', function() {
+		mapObjects.waypoints = {
+			waypoints : []
+		};
+		initMap('map_canvas');
+		initPolyline();
+		mapObjects.markers = [];
+	});
+
+	$('#reverse_button').click(function() {
+
+		$.ajax({
+			type : "POST",
+			contentType : "application/json; charset=utf-8",
+			url : "pathPlanner/reverseRoute",
+			data : "{}",
+			dataType : "json",
+			success : function() {
+				$('#status_bar').empty();
+				$('#status_bar').append("Reversing Route!");
+			},
+			error : function() {
+				$('#status_bar').empty();
+				$('#status_bar').append("Reverse Route not working!");
+			}
+		});
+
+	});
+
+	$('#start_following_button').click(function() {
+
+		$.ajax({
+			type : "POST",
+			contentType : "application/json; charset=utf-8",
+			url : "pathPlanner/startFollowing",
+			data : "{}",
+			dataType : "json",
+			success : function() {
+				$('#status_bar').empty();
+				$("#status_bar").css("color", "green");
+				$('#status_bar').append("Started Following!");
+				
+				$('#stop_following_button').removeClass('ui-disabled');
+				$('#start_following_button').addClass('ui-disabled');
+				$('#reverse_button').removeClass('ui-disabled');
+			},
+			error : function() {
+				$('#status_bar').empty();
+				$("#status_bar").css("color", "red");
+				$('#status_bar').append("Start Following - not working!");
+			}
+		});
+
+	});
+
+	$('#stop_following_button').click(function() {
+
+		$.ajax({
+			type : "POST",
+			contentType : "application/json; charset=utf-8",
+			url : "pathPlanner/stopFollowing",
+			data : "{}",
+			dataType : "json",
+			success : function() {
+				$('#status_bar').empty();
+				$("#status_bar").css("color", "green");
+				$('#status_bar').append("Stopped Following!");
+
+				$('#reverse_button').removeClass('ui-disabled');
+				$('#start_following_button').removeClass('ui-disabled');
+				$('#stop_following_button').removeClass('ui-disabled');
+			},
+			error : function() {
+				// alert("Stop Following - not working!");
+				$('#status_bar').empty();
+				$("#status_bar").css("color", "red");
+				$('#status_bar').append("Stop Following - not working!");
+			}
+		});
+
+	});
+
+	$('#come_home_button').click(function() {
+
+		$.ajax({
+			type : "POST",
+			contentType : "/application/json; charset=utf-8",
+			url : "pathPlanner/comeHome",
+			data : "{}",
+			dataType : "json",
+			success : function() {
 			
-			var coordinatesInterrupt;
-			initMap('map_canvas');
+				$('#status_bar').empty();
+				$("#status_bar").css("color", "green");
+				$('#status_bar').append("Coming Home!");
+				
+			},
+			error : function() {
+				$('#status_bar').empty();
+				$("#status_bar").css("color", "red");
+				$('#status_bar').append("Not Coming Home! :-(");
+			}
+		});
 
-			boatMarker = new google.maps.Marker({
-				map : mapObjects.map,
-			});
-			// trackPosition();
-			// coordinatesInterrupt = setInterval("trackPosition()", 10000);
-			initPolyline();
+	});
 
-			// disabling control buttons
-			$('#reverse_button').addClass('ui-disabled');
-			$('#start_following_button').addClass('ui-disabled');
-			$('#stop_following_button').addClass('ui-disabled');
+	$('#pass_waypoints_button').click(function() {
+		$.ajax({
+			type : "POST",
+			contentType : "application/json; charset=utf-8",
+			url : "pathPlanner/waypoints",
+			data : JSON.stringify(mapObjects.waypoints),
+			dataType : "json",
+			statusCode : {
+				200 : function() {
+					$('#status_bar').empty();
+					$('#status_bar').append("No Waypoints selected!");
 
-			$('#NavDisplay').live('pagehide', function() {
-				clearInterval(coordinatesInterrupt);
-				coordinatesInterrupt = null;
-			});
+				},
+				201 : function() {
 
-			$("#new_trip_button").live('vmousedown', function() {
-				mapObjects.waypoints = {
-					waypoints : []
-				};
-				initMap('map_canvas');
-				initPolyline();
-				mapObjects.markers = [];
-			});
+					// alert("Waypoints sent successfully!");
+					$('#status_bar').empty();
+					  $("#status_bar").css("color", "green");
+					$('#status_bar').append("Waypoints sent successfully!");
+					$('#start_following_button').removeClass('ui-disabled');
+					$('#pass_waypoints_button').addClass('ui-disabled');
+					$('#new_trip_button').addClass('ui-disabled');
+				},
+				404 : function() {
+					$('#status_bar').empty();
+					$("#status_bar").css("color", "red");
+					$('#status_bar').append("Unsuccesful, Please try again");
 
-			$('#reverse_button').click(function() {
+				},
+				500 : function() {
+					$('#status_bar').empty();
+					$("#status_bar").css("color", "red");
+					$('#status_bar').append("Internal Error");
 
-				$.ajax({
-					type : "POST",
-					contentType : "application/json; charset=utf-8",
-					url : "pathPlanner/reverseRoute",
-					data : "{}",
-					dataType : "json",
-					success : function() {
-						alert("Reversing Route!");
-					},
-					error : function() {
-						alert("Reverse Route not working!");
-					}
-				});
-
-			});
-
-			$('#start_following_button').click(function() {
-
-				$.ajax({
-					type : "POST",
-					contentType : "application/json; charset=utf-8",
-					url : "pathPlanner/startFollowing",
-					data : "{}",
-					dataType : "json",
-					success : function() {
-						alert("Started Following!");
-						$('#stop_following_button').removeClass(
-						'ui-disabled');
-						$('#start_following_button').addClass(
-						'ui-disabled');
-					},
-					error : function() {
-						alert("Start Following - not working!");
-					}
-				});
-
-			});
-
-			$('#stop_following_button').click(function() {
-
-				$.ajax({
-					type : "POST",
-					contentType : "application/json; charset=utf-8",
-					url : "pathPlanner/stopFollowing",
-					data : "{}",
-					dataType : "json",
-					success : function() {
-						alert("Stopped Following!");
-						
-						$('#reverse_button').removeClass('ui-disabled');
-				$('#start_following_button').removeClass(
-						'ui-disabled');
-				$('#stop_following_button').removeClass(
-						'ui-disabled');
-					},
-					error : function() {
-						alert("Stop Following - not working!");
-					}
-				});
-
-			});
-
-			$('#come_home_button').click(function() {
-
-				$.ajax({
-					type : "POST",
-					contentType : "/application/json; charset=utf-8",
-					url : "pathPlanner/comeHome",
-					data : "{}",
-					dataType : "json",
-					success : function() {
-						alert("Coming Home!");
-					},
-					error : function() {
-						alert("Coming Home - not working!");
-					}
-				});
-
-			});
-
-			$('#pass_waypoints_button').click(
-					function() {
-						$.ajax({
-							type : "POST",
-							contentType : "application/json; charset=utf-8",
-							url : "pathPlanner/waypoints",
-							data : JSON.stringify(mapObjects.waypoints),
-							dataType : "json",
-							statusCode : {
-								200 : function() {
-									alert("No Waypoints selected!");
-								},
-								201 : function() {
-
-									alert("Waypoints sent successfully!"
-											+ JSON.stringify(mapObjects.waypoints));
-									$('#reverse_button').removeClass(
-											'ui-disabled');
-									$('#start_following_button').removeClass(
-											'ui-disabled');
-									$('#pass_waypoints_button').addClass(
-									'ui-disabled');
-							$('#new_trip_button').addClass(
-									'ui-disabled');
-								},
-								404 : function() {
-									alert("Unsuccesful:"
-											+ JSON.stringify(mapObjects.waypoints));
-
-								},
-								500 : function() {
-									alert("An Internal Error:"
-											+ JSON.stringify(mapObjects.waypoints));
-
-								}
-							}
-
-						});
-
-					});
-			
-			function trackPosition() {
-
-				$.ajax({
-					url : "gps/coordinates",
-					dataType : "json",
-					data : {},
-					async : false,
-					success : function(coordinate) {
-						lt = 35.889446;
-						lg = 14.518411;
-						mapObjects.map.setCenter(new google.maps.LatLng(lt, lg));
-						// boatMarker.setPosition(new google.maps.LatLng(lt, lg));
-
-					},
-					error : function(result) {
-						clearInterval(coordinatesInterrupt);
-						alert(result.status);
-					}
-				});
-
-			};
+				}
+			}
 
 		});
+
+	});
+
+	function trackPosition() {
+
+		$.ajax({
+			url : "gps/coordinates",
+			dataType : "json",
+			data : {},
+			async : false,
+			success : function(coordinate) {
+				lt = 35.889446;
+				lg = 14.518411;
+				mapObjects.map.setCenter(new google.maps.LatLng(lt, lg));
+				// boatMarker.setPosition(new google.maps.LatLng(lt, lg));
+
+			},
+			error : function(result) {
+				clearInterval(coordinatesInterrupt);
+				alert(result.status);
+			}
+		});
+
+	}
+	;
+
+});
 
 var initPolyline = function() {
 	var polyOptions = {
@@ -439,7 +453,7 @@ var moveVMarker = function(index) {
 
 var removeVMarkers = function(index) {
 	if (mapObjects.markers.length > 0) {// clicked marker has already been
-										// deleted
+		// deleted
 		if (index != mapObjects.markers.length) {
 			mapObjects.vmarkers[index].setMap(null);
 			mapObjects.vmarkers.splice(index, 1);
