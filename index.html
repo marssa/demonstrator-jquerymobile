@@ -14,14 +14,13 @@
 
 <!-- Google APIs -->
 
-
 <script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBWZgnwIN_sHi3syeWYmf-PM2OwinAZuhs&sensor=false">
-	
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBWZgnwIN_sHi3syeWYmf-PM2OwinAZuhs&sensor=false">	
 </script>
 
 <!-- Personal -->
 <link rel="stylesheet" type="text/css" href="css/layout.css" />
+<link rel="stylesheet" type="text/css" href="css/drive.css" />
 <script type="text/javascript" src="js/script.js"></script>
 <script type="text/javascript" src="js/googlemap.js"></script>
 <script type="text/javascript" src="js/drive.js"></script>
@@ -109,34 +108,26 @@
 		<!-- /header -->
 
 		<div data-role="content" id="content1">
-
 			<div id="map_container">
 				<div id="map_canvas"></div>
 			</div>
-
-			
 			<div class="waypoints_section">
-			
-
 				<div data-role="controlgroup" data-type="horizontal"
 					data-inline="true">
 					<a id="new_trip_button" data-role="button" data-icon="back">Clear
 						Map</a> <a id="pass_waypoints_button" data-role="button"
 						data-icon="check" data-inline="true">Pass Waypoints</a>
-
 				</div>
-				
 				<div id="status_bar"></div>
-
 				<div id="markers-input" data-role="collapsible-set"></div>
 				<div data-role="controlgroup" data-type="horizontal"
 					data-inline="true">
 
-
 					<a id="start_following_button" data-role="button">Start
-						following</a> <a id="stop_following_button" data-role="button">Stop
-						following</a> <a id="reverse_button" data-role="button">Reverse</a>
-
+						following</a> 
+					<a id="stop_following_button" data-role="button">Stop
+						following</a> 
+					<a id="reverse_button" data-role="button">Reverse</a>
 				</div>
 			</div>
 		</div>
@@ -194,37 +185,30 @@
 	<!-- ***** -->
 
 	<div data-role="page" id="Drive" data-theme="b" data-fullscreen="true">
-
 		<div data-role="header" data-theme="a">
 			<h1>Drive</h1>
 			<a href="#home" data-icon="home" data-theme="c">Home</a>
 		</div>
-
 		<div class="content" data-role="content">
-
 			<div>
 				<input id="percent-thrust" type="text" value="" style="width: 50px" />
 				<input id="rudder-angle" type="text" value="" style="width: 50px" />
 			</div>
-
 			<div class="drive-content">
-
 				<div class="drive-control">
 					<div class="buttons-container">
-
 						<div id="full-ahead">
 							<!-- <img id="full-throttle-hl" class="extreme-buttons" src="img/full-throttle-hl.png" /> -->
 							<img id="full-throttle" class="extreme-buttons"
 								src="img/full-throttle.png" />
 						</div>
-
 						<div id="upper-button">
 
 							<div class="drive-button" id="move-forward">
 								<img id="forward-button-hl" class="img-arrow"
-									src="img/forward-hl.png" /> <img id="forward-button"
+									src="img/forward-hl.png" /> 
+								<img id="forward-button"
 									class="img-arrow" src="img/forward.png" />
-
 							</div>
 
 						</div>
@@ -257,8 +241,6 @@
 								src="img/stop-hl.png" /> <img id="stop-button"
 								class="large-buttons" src="img/stop.png" />
 						</div>
-
-
 					</div>
 				</div>
 			</div>
