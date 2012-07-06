@@ -78,6 +78,14 @@ $('#Drive').live('pagehide', function(event, ui) {
 	t = null;
 });
 
+//common functions
+function showHighLight(elementID) {
+	document.getElementById(elementID).style.display = "block";	
+} 
+function removeHighLight(elementID){
+	$('#' + elementID).hide();	
+}
+
 function decreaseSpeed(){
 	$.ajax({
 		  url: "motor/decreaseSpeed",
@@ -130,3 +138,5 @@ function currentSpeed(){
 		}
 	});
 }
+
+

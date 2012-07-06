@@ -15,7 +15,8 @@
 <!-- Google APIs -->
 
 <script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBWZgnwIN_sHi3syeWYmf-PM2OwinAZuhs&sensor=false">	
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBWZgnwIN_sHi3syeWYmf-PM2OwinAZuhs&sensor=false">
+	
 </script>
 
 <!-- Personal -->
@@ -124,46 +125,9 @@
 					data-inline="true">
 
 					<a id="start_following_button" data-role="button">Start
-						following</a> 
-					<a id="stop_following_button" data-role="button">Stop
-						following</a> 
-					<a id="reverse_button" data-role="button">Reverse</a>
+						following</a> <a id="stop_following_button" data-role="button">Stop
+						following</a> <a id="reverse_button" data-role="button">Reverse</a>
 				</div>
-			</div>
-		</div>
-
-		<div data-role="footer" class="footer" data-theme="a"
-			data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li><a href="#Drive">Drive</a></li>
-					<li><a href="#NavDisplay" class="ui-btn-active">Navigation
-							Display</a></li>
-					<li><a href="#LightControl">Control Lights</a></li>
-					<li><a href="#planner">Path Planner</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<!-- Waypoints -->
-	<!-- ********* -->
-
-	<div data-role="page" id="Waypoints" data-theme="b"
-		data-fullscreen="true">
-		<div data-role="header" data-theme="a">
-			<h1>Navigation Menu - Waypoints</h1>
-			<a href="#NavDisplay" data-icon="back" data-theme="c">Back</a>
-		</div>
-		<!-- /header -->
-
-		<div data-role="content">
-			<div id="waypoints-list-container">
-				<!-- to be filled dynamically -->
-				<ul id="waypoints-list" data-role="listview" data-theme="c"
-					data-dividertheme="d">
-					<li data-role="list-divider">Form elements</li>
-				</ul>
 			</div>
 		</div>
 
@@ -189,60 +153,19 @@
 			<h1>Drive</h1>
 			<a href="#home" data-icon="home" data-theme="c">Home</a>
 		</div>
+
 		<div class="content" data-role="content">
-			<div>
-				<input id="percent-thrust" type="text" value="" style="width: 50px" />
-				<input id="rudder-angle" type="text" value="" style="width: 50px" />
-			</div>
-			<div class="drive-content">
-				<div class="drive-control">
-					<div class="buttons-container">
-						<div id="full-ahead">
-							<!-- <img id="full-throttle-hl" class="extreme-buttons" src="img/full-throttle-hl.png" /> -->
-							<img id="full-throttle" class="extreme-buttons"
-								src="img/full-throttle.png" />
-						</div>
-						<div id="upper-button">
+			<div id="drive-control" >
+				<div class="drive-button" data-role="button" data-icon="arrow-u"
+					data-iconpos="notext"></div>
 
-							<div class="drive-button" id="move-forward">
-								<img id="forward-button-hl" class="img-arrow"
-									src="img/forward-hl.png" /> 
-								<img id="forward-button"
-									class="img-arrow" src="img/forward.png" />
-							</div>
-
-						</div>
-
-						<div class="lower-buttons">
-							<div class="drive-button" id="turn-portside">
-								<img id="ps-button-hl" class="img-arrow" src="img/left-hl.png" />
-								<img id="ps-button" class="img-arrow" src="img/left.png" />
-							</div>
-
-							<div class="drive-button" id="move-backward">
-								<img id="down-button-hl" class="img-arrow" src="img/down-hl.png" />
-								<img id="down-button" class="img-arrow" src="img/down.png" />
-							</div>
-
-							<div class="drive-button" id="turn-starboard">
-								<img id="sb-button-hl" class="img-arrow" src="img/right-hl.png" />
-								<img id="sb-button" class="img-arrow" src="img/right.png" />
-							</div>
-						</div>
-
-						<div id="full-astern">
-							<!--<img id="full-astern-button-hl" class="extreme-buttons" src="img/full-astern-hl.png" /> -->
-							<img id="full-astern-button" class="extreme-buttons"
-								src="img/full-astern.png" />
-						</div>
-
-						<div id="stop">
-							<img id="stop-button-hl" class="large-buttons"
-								src="img/stop-hl.png" /> <img id="stop-button"
-								class="large-buttons" src="img/stop.png" />
-						</div>
-					</div>
+				<div data-role="controlgroup" data-type="horizontal" >
+					<a class="drive-button" data-role="button" data-icon="arrow-l" data-iconpos="notext" ></a> 
+						<a class="drive-button" data-role="button" data-icon="delete" data-iconpos="notext" data-theme="a"></a> 
+						<a class="drive-button" data-role="button" data-icon="arrow-r" data-iconpos="notext"></a>
 				</div>
+				<div class="drive-button" data-role="button" data-icon="arrow-d"
+					data-iconpos="notext"></div>
 			</div>
 		</div>
 		<div data-role="footer" class="footer" data-theme="a"
